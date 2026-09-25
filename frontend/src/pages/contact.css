@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --navy: #171743;
+    --royalBlue: #27276e;
+    --indigo: #4343aa;
+    --cyan: #128076;
+    --teal: #1c9f93;
+    --aqua: #23d2c2;
+    --mint: #d5fffb;
+    --lavender: #dadaff;
+    --white: #ffffff;
+    --fontTitle: "League Spartan", sans-serif;
+    --fontBody: "Red Hat Display", sans-serif;
+    --radius: 16px;
+    --shadow: 4px 8px 12px rgba(8, 8, 46, 0.5);
+    --greenShadow: 0px 0px 8px #317b74;
+    --gutter: clamp(16px, 4vw, 32px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fontBody);
+    color: var(--navy);
+}
+
+h1, h2, h3 {
+    font-family: var(--fontTitle);
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 3px;
+}
+
+.container {
+    width: min(100% - 2 * var(--gutter), 1100px);
+    margin-inline: auto;
+}
+
+.contact {
+    background: #f1f1ff;
+    background: linear-gradient(
+        180deg,
+        rgba(241, 241, 255, 1) 0%,
+        rgba(39, 39, 110, 1) 75%
+    );
+}
+
+
+
+
+/* Hero */
+.hero {
+    position: relative;
+}
+
+.contactHero picture {
+    display: block;
+}
+
+.heroImg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+/* Intro */
+.section {
+    margin-top: 48px;
+    color: var(--navy);
+}
+
+.contactIntro h1 {
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
+.contactIntro p {
+    margin: 0;
+    color: var(--navy);
+}
+
+
+
+
+/* Contact cards */
+.contactCards {
+    display: grid;
+    gap: 16px;
+}
+
+.contactCard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: linear-gradient(160deg, var(--white), var(--mint));
+}
+
+.contactCardIcon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #1C9F93;
+    background: radial-gradient(circle, rgba(28, 159, 147, 1) 0%, rgba(8, 84, 76, 1) 100%);
+    color: var(--white);
+    font-size: 1.2rem;
+    box-shadow: var(--greenShadow);
+}
+
+.contactCardLabel {
+    display: block;
+    color: var(--teal);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.contactCardValue {
+    display: block;
+    margin: 0;
+    color: var(--navy);
+    font-weight: 700;
+}
+
+a.contactCardValue:hover {
+    color: var(--cyan);
+    text-decoration: underline;
+}
+
+
+
+
+/* Adoption procedures */
+.procedures h2 {
+    color: var(--navy);
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    letter-spacing: 0.04em;
+}
+
+.proceduresSub {
+    margin: 4px 0 24px;
+    color: var(--navy);
+}
+
+.procedures h3 {
+    color: var(--white);
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    margin: 28px 0 12px;
+}
+
+.proceduresList {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--white);
+}
+
+.proceduresList li {
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
+
+.proceduresList li:last-child {
+    margin-bottom: 0;
+}
+
+.proceduresList li::marker {
+    color: var(--aqua);
+}
+
+
+
+
+/* Responsiveness: Tablet */
+@media (min-width: 834px) {
+    .contactCards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Responsiveness: Desktop */
+@media (min-width: 1024px) {
+    .section {
+        margin-top: 64px;
+    }
+}

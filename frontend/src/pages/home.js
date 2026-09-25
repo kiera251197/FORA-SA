@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { FiUser, FiClock, FiMail, FiArrowRight, FiEye } from "react-icons/fi";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import heroDesktop from "../assets/images/heroHomeDesktop.svg";
-import heroTablet from "../assets/images/heroHomeTablet.svg";
-import heroMobile from "../assets/images/heroHomeMobile.svg";
+import heroDesktop from "../assets/images/heroHomeDesktop.png";
+import heroTablet from "../assets/images/heroHomeTablet.png";
+import heroMobile from "../assets/images/heroHomeMobile.png";
 import volunteerIcon from "../assets/icons/volunteer.svg";
 import "./home.css";
 

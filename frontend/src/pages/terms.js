@@ -1,8 +1,8 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import heroDesktop from "../assets/images/heroTermsDesktop.svg";
-import heroTablet from "../assets/images/heroTermsTablet.svg";
-import heroMobile from "../assets/images/heroTermsMobile.svg";
+import heroDesktop from "../assets/images/heroTermsDesktop.png";
+import heroTablet from "../assets/images/heroTermsTablet.png";
+import heroMobile from "../assets/images/heroTermsMobile.png";
 import "./terms.css";
 
 const termsCards = [
@@ -13,7 +13,7 @@ const termsCards = [
         <p>
             Visit FORA anytime during our <em><strong>working hours</strong></em> (Monday - Friday 09:00 - 16:00, Saturday 09:00 - 14:00 and Sunday 09:00 - 12:00) and fill out an indemnity form
         </p>
-        
+
         <p className="termsOr">OR</p>
 
         <p>

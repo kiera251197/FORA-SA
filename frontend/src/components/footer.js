@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
-import footerDesktop from "../assets/images/footerBGDesktop.svg";
-import footerTablet from "../assets/images/footerBGTablet.svg";
-import footerMobile from "../assets/images/footerBGMobile.svg";
+import footerDesktop from "../assets/images/footerBGDesktop.jpg";
+import footerTablet from "../assets/images/footerBGTablet.jpg";
+import footerMobile from "../assets/images/footerBGMobile.jpg";
 import Story from '../pages/story';
 
 

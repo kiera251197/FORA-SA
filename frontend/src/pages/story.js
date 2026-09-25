@@ -1,9 +1,9 @@
 import { FiEye, FiCompass, FiTarget, FiHeart } from "react-icons/fi";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import heroDesktop from "../assets/images/heroStoryDesktop.svg";
-import heroTablet from "../assets/images/heroStoryTablet.svg";
-import heroMobile from "../assets/images/heroStoryMobile.svg";
+import heroDesktop from "../assets/images/heroStoryDesktop.png";
+import heroTablet from "../assets/images/heroStoryTablet.png";
+import heroMobile from "../assets/images/heroStoryMobile.png";
 import "../pages/story.css";
 
 const pillars = [

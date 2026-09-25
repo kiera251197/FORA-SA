@@ -49,13 +49,12 @@ a {
 }
 
 .terms {
-  background: #f1f1ff;
-  background: linear-gradient(
-    180deg,
-    rgba(241, 241, 255, 1) 0%,
-    rgba(39, 39, 110, 1) 55%,
-    rgba(39, 39, 110, 1) 100%
-  );
+    background: #f1f1ff;
+    background: linear-gradient(
+        180deg,
+        rgba(241, 241, 255, 1) 0%,
+        rgba(39, 39, 110, 1) 75%
+    );
 }
 
 
