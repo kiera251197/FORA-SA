@@ -86,7 +86,6 @@ export default function Home() {
           <source media="(min-width: 834px)" srcSet={heroTablet} />
           <img className="heroImg" src={heroMobile} alt="A golden retriever leaping across a green meadow" />
         </picture>
-        <h1 className="srOnly">FORA Connect</h1>
         <p className="heroCaption">
           Join FORA's <strong>volunteer community</strong> and make a real <strong>difference</strong> in
           the lives of rescued animals across <strong>South Africa</strong>.

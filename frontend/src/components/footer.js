@@ -3,6 +3,8 @@ import { FaFacebook } from "react-icons/fa";
 import footerDesktop from "../assets/images/footerBGDesktop.svg";
 import footerTablet from "../assets/images/footerBGTablet.svg";
 import footerMobile from "../assets/images/footerBGMobile.svg";
+import Story from '../pages/story';
+
 
 export default function Footer() {
   return (
