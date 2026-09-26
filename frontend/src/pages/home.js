@@ -50,20 +50,21 @@ const opportunities = [
 ];
 
 const fallbackAnnouncements = [
-  { 
-    id: 1, 
-    message: "We urgently need 8 volunteers this Saturday for our Adoption Day. If you can help between 09:00 and 17:00, please sign up using the volunteer form!", 
-    urgent: true 
+  { id: 1, 
+    title: "Adoption Day", 
+    description: "We urgently need 8 volunteers this Saturday for our Adoption Day. If you can help between 09:00 and 17:00, please sign up using the volunteer form!", 
+    labels: ["Urgent"] 
   },
-  { 
-    id: 2, 
-    message: "Our food supply for our animals is always a main priority. We are asking the community to donate food items or monetary contributions to help keep our animals well-fed and healthy.", 
-    urgent: true 
+  { id: 2, 
+    title: "Food Supply Drive", 
+    description: "Our food supply for our animals is always a main priority. We are asking the community to donate food items or monetary contributions to help keep our animals well-fed and healthy.", 
+    labels: ["Urgent"] 
   },
   { 
     id: 3, 
-    message: "Help keep our rescue safe, clean and welcoming. Tasks include painting, repairs, gardening and general maintenance.", 
-    urgent: false 
+    title: "Shelter Maintenance", 
+    description: "Help keep our rescue safe, clean and welcoming. Tasks include painting, repairs, gardening and general maintenance.", 
+    labels: [] 
   },
 ];
 
@@ -139,8 +140,8 @@ export default function Home() {
           <ul className="announcements">
             {announcements.map((a) => (
               <li key={a.id}>
-                <span className={`dot ${a.urgent ? "dotUrgent" : "dotInfo"}`} aria-label={a.urgent ? "Urgent" : "Info"} />
-                <span className="announcementsText">{a.message}</span>
+                <span className={`dot ${a.labels?.includes("Urgent") ? "dotUrgent" : "dotInfo"}`} />
+                <span className="announcementsText">{a.title}</span>
               </li>
             ))}
           </ul>

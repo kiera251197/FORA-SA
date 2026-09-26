@@ -1,0 +1,389 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --navy: #171743;
+    --royalBlue: #27276e;
+    --indigo: #4343aa;
+    --cyan: #128076;
+    --teal: #1c9f93;
+    --aqua: #23d2c2;
+    --mint: #d5fffb;
+    --lavender: #dadaff;
+    --urgentText: #e90c0c;
+    --urgentFill: #f8d2d2;
+    --inOutdoorText: #5569a8;
+    --inOutdoorFill: #dae6ee;
+    --communityText: #1f8e63;
+    --communityFill: #def0e9;
+    --shelterText: #ab37a5;
+    --shelterFill: #f6e4f5;
+    --fundraiserText: #681ac5;
+    --fundraiserFill: #e8e5f7;
+    --white: #ffffff;
+    --fontTitle: "League Spartan", sans-serif;
+    --fontBody: "Red Hat Display", sans-serif;
+    --radius: 16px;
+    --shadow: 4px 8px 12px rgba(8, 8, 46, 0.5);
+    --greenShadow: 0px 0px 8px #317b74;
+    --gutter: clamp(16px, 4vw, 32px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fontBody);
+    color: var(--navy);
+}
+
+h1, h2, h3 {
+    font-family: var(--fontTitle);
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 3px;
+}
+
+.container {
+    width: min(100% - 2 * var(--gutter), 1100px);
+    margin-inline: auto;
+}
+
+.staffPage {
+    min-height: 100vh;
+    background: #f1f1ff;
+    background: linear-gradient(
+        180deg,
+        rgba(241, 241, 255, 1) 0%,
+        rgba(39, 39, 110, 1) 90%
+    );
+}
+
+
+
+
+/* Staff navbar */
+.staffNavbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    width: min(100% - 2 * var(--gutter), 1100px);
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 999px;
+    box-shadow: 0 0px 20px #575794;
+}
+
+.staffNavbarBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--fontTitle);
+    font-weight: 600;
+}
+
+.staffNavbarBrand img {
+    height: 22px;
+}
+
+.staffWelcome {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.staffLogout {
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 999px;
+    background: #232358;
+    color: var(--white);
+    font-family: var(--fontBody);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+
+
+/* Main */
+.staffMain {
+    padding-top: 32px;
+    padding-bottom: 64px;
+}
+
+.staffEyebrow {
+    margin: 0 0 4px;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.staffMain h1 {
+    color: var(--navy);
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    letter-spacing: 0.06em;
+}
+
+.staffCard {
+    margin-top: 32px;
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: var(--white);
+}
+
+.staffCardHead {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+}
+
+
+
+
+/* Fields */
+.staffField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.staffField input,
+.staffField textarea {
+    padding: 14px 16px;
+    border: 1px solid var(--lavender);
+    border-radius: 10px;
+    font-family: var(--fontBody);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--navy);
+    resize: vertical;
+}
+
+.staffFieldRow {
+    display: grid;
+    gap: 20px;
+}
+
+
+
+
+/* Image upload */
+.uploadBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 200px;
+    border: 2px dashed var(--lavender);
+    border-radius: var(--radius);
+    color: var(--navy);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.uploadPrompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.uploadPrompt svg {
+    font-size: 1.6rem;
+}
+
+.uploadPreview {
+    width: 100%;
+    height: 100%;
+    max-height: 260px;
+    object-fit: cover;
+}
+
+
+
+
+/* Labels */
+.labelPicker {
+    margin-bottom: 24px;
+}
+
+.labelPickerHeading {
+    margin: 0 0 10px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.labelPickerEmpty {
+    margin: 0 0 10px;
+    color: #8888a8;
+}
+
+.labelRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.labelPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border: 0;
+    border-radius: 999px;
+    font-family: var(--fontBody);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.labelIndoor, .labelOutdoor {
+    background: var(--inOutdoorFill);
+    color: var(--inOutdoorText);
+}
+
+.labelShelter {
+    background: var(--shelterFill);
+    color: var(--shelterText);
+}
+
+.labelCommunity {
+    background: var(--communityFill);
+    color: var(--communityText);
+}
+
+.labelFundraiser {
+    background: var(--fundraiserFill);
+    color: var(--fundraiserText);
+}
+
+.labelUrgent {
+    background: var(--urgentFill);
+    color: var(--urgentText);
+}
+
+
+
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 12px;
+    font-family: var(--fontBody);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.btnTeal {
+    background: radial-gradient(circle, rgba(89, 170, 163, 1) 0%, rgba(22, 117, 108, 1) 100%);
+    color: var(--white);
+    box-shadow: var(--greenShadow);
+}
+
+.btnOutline {
+    background: var(--white);
+    border: 1px solid var(--lavender);
+    color: var(--indigo);
+}
+
+.btnIndigoSolid {
+    background: var(--indigo);
+    color: var(--white);
+}
+
+.staffCardActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+
+
+
+/* Staff footer */
+.staffFooter {
+    margin-top: 64px;
+    padding: 56px 0 24px;
+    color: var(--white);
+    background: var(--navy);
+}
+
+.staffFooterInner {
+    display: grid;
+    gap: 32px;
+}
+
+.footerBrand h2 {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+}
+
+.footerTagline {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.footerAbout {
+    max-width: 42ch;
+    margin: 12px 0 0;
+    font-size: 0.9rem;
+}
+
+.staffFooterInner nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.staffFooterInner nav h3 {
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+}
+
+.footerCopy {
+    text-align: center;
+    font-size: 0.8rem;
+    margin: 32px 0 0;
+}
+
+
+
+
+/* Responsiveness: Tablet */
+@media (min-width: 834px) {
+    .staffFieldRow {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .staffFooterInner {
+        grid-template-columns: repeat(2, auto);
+        justify-content: space-between;
+    }
+}
