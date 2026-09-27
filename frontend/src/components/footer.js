@@ -3,7 +3,6 @@ import { FaFacebook } from "react-icons/fa";
 import footerDesktop from "../assets/images/footerBGDesktop.jpg";
 import footerTablet from "../assets/images/footerBGTablet.jpg";
 import footerMobile from "../assets/images/footerBGMobile.jpg";
-import Story from '../pages/story';
 
 
 export default function Footer() {
@@ -47,7 +46,7 @@ export default function Footer() {
           <h3>Follow Us</h3>
           <a href="https://www.facebook.com/groups/friendsofrescuedanimals/" aria-label="FORA SA on Facebook"><FaFacebook /></a>
         </div>
-        <p className="footerCopy">© 2026 FORA SA – Friends of Rescued Animals. All Rights Reserved.</p>
+        <p className="footerCopy">© 2026 FORA SA - Friends of Rescued Animals. All Rights Reserved.</p>
       </div>
     </footer>
   );

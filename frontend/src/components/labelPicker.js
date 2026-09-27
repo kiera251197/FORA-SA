@@ -3,10 +3,12 @@ import { FiX } from "react-icons/fi";
 export const LABELS = [
     { key: "Indoor", cls: "labelIndoor" },
     { key: "Outdoor", cls: "labelOutdoor" },
+    { key: "Weekend", cls: "labelWeekend"},
+    { key: "Weekday", cls: "labelWeekday"},
     { key: "Shelter Update", cls: "labelShelter" },
     { key: "Community News", cls: "labelCommunity" },
     { key: "Fundraiser", cls: "labelFundraiser" },
-    { key: "Urgent", cls: "labelUrgent" },
+    { key: "Urgent", cls: "labelUrgent" }
 ];
 
 export default function LabelPicker({ selected, onChange }) {

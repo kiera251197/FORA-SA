@@ -8,6 +8,8 @@ import AddAnnouncement from './pages/staff/addAnnouncement';
 import EditAnnouncement from './pages/staff/editAnnouncement';
 import AddOpportunity from './pages/staff/addOpportunity';
 import EditOpportunity from './pages/staff/editOpportunity';
+import StaffLogin from './pages/staff/login';
+import StaffDashboard from './pages/staff/dashboard';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
       <Route path="/terms" element={<Terms />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/opportunities" element={<Opportunities />} />
+      <Route path="/staff/login" element={<StaffLogin />} />
+      <Route path="/staff/dashboard" element={<StaffDashboard />} />
       <Route path="/staff/announcements/new" element={<AddAnnouncement />} />
       <Route path="/staff/announcements/:id/edit" element={<EditAnnouncement />} />
       <Route path="/staff/opportunities/new" element={<AddOpportunity />} />

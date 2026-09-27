@@ -5,6 +5,7 @@ import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import LabelPicker from "../../components/labelPicker";
 import "../staff/staff.css";
+import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
 
 export default function EditOpportunity() {
     const { id } = useParams();
@@ -39,6 +40,7 @@ export default function EditOpportunity() {
     const handleSave = async () => {
         setSaving(true);
         const data = new FormData();
+        
         data.append("title", title);
         data.append("location", location);
         data.append("hours", hours);
@@ -69,10 +71,10 @@ export default function EditOpportunity() {
 
     return (
         <div className="staffPage">
-            <StaffNavbar staffName="Linda" onLogout={() => navigate("/staff/login")} />
+            <StaffNavbar staffName={getStaffName()} onLogout={() => { clearStaffSession(); navigate("/staff/login"); }} />
 
             <main className="container staffMain">
-                <p className="staffEyebrow">FORA STAFF</p>
+                <p className="staffSubHeading">FORA STAFF</p>
                 <h1>Edit Opportunity</h1>
 
                 <section className="staffCard">

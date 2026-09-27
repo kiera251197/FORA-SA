@@ -14,6 +14,8 @@
     --urgentFill: #f8d2d2;
     --inOutdoorText: #5569a8;
     --inOutdoorFill: #dae6ee;
+    --weekdayEndText: #D37E15;
+    --weekdayEndFill: #FBEAD6;
     --communityText: #1f8e63;
     --communityFill: #def0e9;
     --shelterText: #ab37a5;
@@ -25,6 +27,7 @@
     --fontBody: "Red Hat Display", sans-serif;
     --radius: 16px;
     --shadow: 4px 8px 12px rgba(8, 8, 46, 0.5);
+    --softShadow: 2px 4px 8px rgba(23, 23, 67, 0.25);
     --greenShadow: 0px 0px 8px #317b74;
     --gutter: clamp(16px, 4vw, 32px);
 }
@@ -61,6 +64,7 @@ a {
 
 .staffPage {
     min-height: 100vh;
+    padding-top: 32px;
     background: #f1f1ff;
     background: linear-gradient(
         180deg,
@@ -71,17 +75,26 @@ a {
 
 
 
-
 /* Staff navbar */
+.staffNavbarWrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    width: min(100%, 1100px);
+}
+
 .staffNavbar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin: 0 auto;
+    flex: 1 1 480px;
     padding: 14px 28px;
-    width: min(100% - 2 * var(--gutter), 1100px);
     background: var(--navy);
     color: var(--white);
     border-radius: 999px;
@@ -91,30 +104,49 @@ a {
 .staffNavbarBrand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-family: var(--fontTitle);
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .staffNavbarBrand img {
-    height: 22px;
+    height: 24px;
 }
 
 .staffWelcome {
     margin: 0;
     font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 .staffLogout {
-    padding: 10px 20px;
+    flex: 0 0 auto;
+    padding: 18px 32px;
     border: 0;
     border-radius: 999px;
-    background: #232358;
+    background: var(--navy);
     color: var(--white);
     font-family: var(--fontBody);
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 0px 20px #575794;
+
 }
+
+.staffLogout:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
+    box-shadow: 0 0px 20px #575794;
+    background: #6868b5;
+    background: radial-gradient( circle,
+    rgba(104, 104, 181, 1) 0%,
+    rgba(39, 39, 110, 1) 100%
+  );
+}
+
+
 
 
 
@@ -125,8 +157,8 @@ a {
     padding-bottom: 64px;
 }
 
-.staffEyebrow {
-    margin: 0 0 4px;
+.staffSubHeading {
+    margin: 0 0 16px;
     color: var(--teal);
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -262,6 +294,11 @@ a {
     color: var(--inOutdoorText);
 }
 
+.labelWeekend, .labelWeekday {
+    background: var(--weekdayEndFill);
+    color: var(--weekdayEndText);
+}
+
 .labelShelter {
     background: var(--shelterFill);
     color: var(--shelterText);
@@ -307,13 +344,31 @@ a {
 
 .btnOutline {
     background: var(--white);
-    border: 1px solid var(--lavender);
-    color: var(--indigo);
+    border: 1.2px solid var(--indigo) !important;
+    box-shadow: var(--softShadow) !important;
+    background: #4F4FA5;
+    background: linear-gradient(90deg, rgba(79, 79, 165, 1) 0%, rgba(42, 42, 115, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--indigo) !important;
+}
+
+.btnOutline:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
 }
 
 .btnIndigoSolid {
-    background: var(--indigo);
+    background: #6868b5;
+    background: radial-gradient( circle,
+    rgba(104, 104, 181, 1) 0%,
+    rgba(39, 39, 110, 1) 100% );;
     color: var(--white);
+}
+
+.btnIndigoSolid:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.05);
 }
 
 .staffCardActions {
