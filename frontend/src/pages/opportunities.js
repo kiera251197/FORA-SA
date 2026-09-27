@@ -11,54 +11,31 @@ import "./opportunities.css";
 
 const filters = ["All Roles", "Weekday", "Weekend", "Indoor", "Outdoor", "Urgent"];
 
-const fallbackOpportunities = [
-    {
-        id: 1,
-        title: "Dog Walking",
-        description: "Help give shelter dogs their daily exercise and human socialization, essential for their well-being and adopt-ability.",
-        hours: "2hrs/session",
-        location: "PTN 11, Reydal, Tarlton, Gauteng. Wolfelea AH.",
-        image: null,
-        tags: ["Outdoor", "Urgent"],
-    },
-    {
-        id: 2,
-        title: "Puppy Play Dates",
-        description: "Help Play, socialize and interact with our younger dogs and puppies. Help pups develop confidence and trust in people.",
-        hours: "2hrs/session",
-        location: "PTN 11, Reydal, Tarlton, Gauteng. Wolfelea AH.",
-        image: null,
-        tags: ["Outdoor"],
-    },
-    {
-        id: 3,
-        title: "Cattery Care",
-        description: "Care for rescued kittens and cats - feeding, socialisation, litter management and gentle handling.",
-        hours: "2hrs/session",
-        location: "PTN 11, Reydal, Tarlton, Gauteng. Wolfelea AH.",
-        image: null,
-        tags: ["Indoor"],
-    },
-    {
-        id: 4,
-        title: "Shelter Maintenance",
-        description: "Help keep our rescue safe, clean and welcoming. Tasks include painting, repairs, gardening and general upkeep.",
-        hours: "3hrs/session",
-        location: "PTN 11, Reydal, Tarlton, Gauteng. Wolfelea AH.",
-        image: null,
-        tags: ["Outdoor", "Indoor"],
-    },
-];
+const tagClassMap = {
+    "Urgent": "tagUrgent",
+    "Indoor": "tagIndoor",
+    "Outdoor": "tagOutdoor",
+    "Weekday": "tagWeekday",
+    "Weekend": "tagWeekend",
+};
 
 export default function Opportunities() {
-    const [opportunities, setOpportunities] = useState(fallbackOpportunities);
+    const [opportunities, setOpportunities] = useState([]);
     const [activeFilter, setActiveFilter] = useState("All Roles");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("/api/opportunities")
             .then((res) => (res.ok ? res.json() : Promise.reject()))
-            .then(setOpportunities)
-            .catch(() => {});
+            .then((data) => {
+                setOpportunities(data || []);
+            })
+            .catch((err) => {
+                console.error("Failed to load opportunities:", err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, []);
 
     const visibleOpportunities =
@@ -99,35 +76,53 @@ export default function Opportunities() {
                 </section>
 
                 <section className="section oppsGrid" aria-label="Volunteer opportunities">
-                    {visibleOpportunities.map((opp) => (
-                        <article key={opp.id} className="oppCard">
-                            {opp.image && <img className="oppCardImg" src={opp.image} alt="" />}
-                            <div className="oppCardBody">
-                                <div className="oppCardHead">
-                                    <h2>{opp.title}</h2>
-                                    <div className="oppCardTags">
-                                        {opp.tags?.map((tag) => (
-                                            <span
-                                                key={tag}
-                                                className={`tag${tag === "Urgent" ? " tagUrgent" : ""}`}
-                                            >
-                                                {tag}
-                                            </span>
-                                        ))}
+                    {loading ? (
+                        <p style={{ color: "var(--navy)", fontStyle: "italic" }}>Loading opportunities...</p>
+                    ) : visibleOpportunities.length === 0 ? (
+                        <p style={{ color: "var(--navy)" }}>No opportunities found for this filter.</p>
+                    ) : (
+                        visibleOpportunities.map((opp) => (
+                            <article key={opp.id} className="oppCard">
+                                {opp.image && (
+                                    <div className="oppCardImgWrap">
+                                        <img className="oppCardImg" src={opp.image} alt={opp.title} />
                                     </div>
+                                )}
+                                <div className="oppCardBody">
+                                    <div className="oppCardHead">
+                                        <h2>{opp.title}</h2>
+                                        <div className="oppCardTags">
+                                            {opp.tags?.map((tag) => (
+                                                <span key={tag} className={`tag ${tagClassMap[tag] || "tagIndoor"}`}>
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <p className="oppCardText">{opp.description}</p>
+
+                                    <div className="oppCardMeta">
+                                        {opp.hours && (
+                                            <span>
+                                                <FiClock aria-hidden="true" /> {opp.hours}
+                                            </span>
+                                        )}
+                                        {opp.location && (
+                                            <span>
+                                                <FiMapPin aria-hidden="true" /> {opp.location}
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <Link to="/register" className="btn btnTeal" id="oppCardBtn">
+                                        <img src={volunteerIcon} alt="" />
+                                        Volunteer
+                                    </Link>
                                 </div>
-                                <p className="oppCardText">{opp.description}</p>
-                                <div className="oppCardMeta">
-                                    <span><FiClock aria-hidden="true" /> {opp.hours}</span>
-                                    <span><FiMapPin aria-hidden="true" /> {opp.location}</span>
-                                </div>
-                                <Link to="/register" className="btn btnTeal" id="oppCardBtn">
-                                    <img src={volunteerIcon} alt="" />
-                                    Volunteer
-                                </Link>
-                            </div>
-                        </article>
-                    ))}
+                            </article>
+                        ))
+                    )}
                 </section>
             </main>
 
