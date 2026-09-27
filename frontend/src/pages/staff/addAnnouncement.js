@@ -5,7 +5,7 @@ import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import LabelPicker from "../../components/labelPicker";
 import "../staff/staff.css";
-import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
+import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAuth";
 
 export default function AddAnnouncement() {
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ export default function AddAnnouncement() {
     const handleSubmit = async () => {
         setSaving(true);
         try {
-            const res = await fetch("/api/announcements", {
+            const res = await staffFetch("/api/announcements", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title, description, labels: labels.join(",") }),
@@ -56,7 +56,7 @@ export default function AddAnnouncement() {
                         <textarea rows="5" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </label>
 
-                    <LabelPicker selected={labels} onChange={setLabels} />
+                    <LabelPicker selected={labels} onChange={setLabels} scope="announcement" />
 
                     <div className="staffCardActions">
                         <button type="button" className="btn btnOutline" onClick={() => navigate("/staff/dashboard")}>

@@ -22,37 +22,6 @@ const labelClassMap = {
     "Fundraiser": "labelFundraiser",
 };
 
-const fallbackAnnouncements = [
-    {
-        id: 1,
-        title: "Volunteers Needed This Weekend",
-        description: "We urgently need 8 volunteers this Saturday for our Adoption Day. If you can help between 09:00 and 15:00, please sign up via FORA Connect",
-        labels: ["Urgent"],
-        created_at: "2026-08-04",
-    },
-    {
-        id: 2,
-        title: "Spring Food Drive",
-        description: "Our food supply for our animals is always a main priority. We are asking the community to donate dog and cat food. Drop-offs are accepted at FORA on weekdays 08:00 - 17:00, or you can donate to us to help assist.",
-        labels: ["Urgent"],
-        created_at: "2026-08-04",
-    },
-    {
-        id: 3,
-        title: "Puppy Play Sessions Now Available!",
-        description: "Our Puppy Play sessions are now in full swing! Spaces are limited to 6 volunteers. Book your spot through the calendar and fill out your volunteer registration!",
-        labels: ["Shelter Update"],
-        created_at: "2026-07-28",
-    },
-    {
-        id: 4,
-        title: "R50 000 Medical Fund Milestone Reached",
-        description: "Thanks to your incredible generosity, we have reached our R50 000 medical fund target - ensuring emergency veterinary care for every animal in our care this year.",
-        labels: ["Community News"],
-        created_at: "2026-07-27",
-    },
-];
-
 function formatDate(dateString) {
     if (!dateString) return "";
     return new Date(dateString).toLocaleDateString("en-GB", {
@@ -69,27 +38,23 @@ function getNormalizedLabels(rawLabels) {
 }
 
 export default function Announcements() {
-    const [announcements, setAnnouncements] = useState(fallbackAnnouncements);
+     const [announcements, setAnnouncements] = useState([]);
     const [activeFilter, setActiveFilter] = useState("All");
 
     useEffect(() => {
         fetch("/api/announcements")
             .then((res) => (res.ok ? res.json() : Promise.reject()))
-            .then((data) => {
-                if (data && data.length > 0) {
-                    setAnnouncements(data);
-                }
-            })
-            .catch(() => {});
+            .then((data) => setAnnouncements(data || []))
+            .catch(() => setAnnouncements([]));
     }, []);
-
+    
     const visibleAnnouncements =
-        activeFilter === "All"
-            ? announcements
-            : announcements.filter((a) => {
-                  const labelArray = getNormalizedLabels(a.labels);
-                  return labelArray.includes(filterToLabel[activeFilter]);
-              });
+    activeFilter === "All"
+        ? announcements
+        : announcements.filter((a) => {
+              const labelArray = getNormalizedLabels(a.labels);
+              return labelArray.includes(filterToLabel[activeFilter]);
+          });
 
     return (
         <div className="announcementsPage">
@@ -124,27 +89,31 @@ export default function Announcements() {
                 </section>
 
                 <section className="section announcementsGrid" aria-label="Announcements">
-                    {visibleAnnouncements.map((a) => {
-                        const primaryLabel = a.labels?.[0] || "Shelter Update";
-                        const labelClass = labelClassMap[primaryLabel] || "labelShelter";
+                    {visibleAnnouncements.length === 0 ? (
+                        <p className="announcementsEmpty">No announcements to show right now — check back soon.</p>
+                    ) : (
+                        visibleAnnouncements.map((a) => {
+                            const primaryLabel = a.labels?.[0] || "Shelter Update";
+                            const labelClass = labelClassMap[primaryLabel] || "labelShelter";
 
-                        return (
-                            <article key={a.id} className="announcementCard">
-                                <div className="announcementCardHead">
-                                    <div className="labelPillsContainer">
-                                        {a.labels?.map((lbl) => (
-                                            <span key={lbl} className={`labelPill ${labelClassMap[lbl] || "labelShelter"}`}>
-                                                {lbl}
-                                            </span>
-                                        ))}
+                            return (
+                                <article key={a.id} className="announcementCard">
+                                    <div className="announcementCardHead">
+                                        <div className="labelPillsContainer">
+                                            {a.labels?.map((lbl) => (
+                                                <span key={lbl} className={`labelPill ${labelClassMap[lbl] || "labelShelter"}`}>
+                                                    {lbl}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <span className="announcementDate">{formatDate(a.created_at)}</span>
                                     </div>
-                                    <span className="announcementDate">{formatDate(a.created_at)}</span>
-                                </div>
-                                <h2 className={`announcementTitle ${labelClass}Text`}>{a.title}</h2>
-                                <p className="announcementText">{a.description}</p>
-                            </article>
-                        );
-                    })}
+                                    <h2 className={`announcementTitle ${labelClass}Text`}>{a.title}</h2>
+                                    <p className="announcementText">{a.description}</p>
+                                </article>
+                            );
+                        })
+                    )}
                 </section>
             </main>
 

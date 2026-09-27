@@ -1,18 +1,19 @@
 import { FiX } from "react-icons/fi";
 
 export const LABELS = [
-    { key: "Indoor", cls: "labelIndoor" },
-    { key: "Outdoor", cls: "labelOutdoor" },
-    { key: "Weekend", cls: "labelWeekend"},
-    { key: "Weekday", cls: "labelWeekday"},
-    { key: "Shelter Update", cls: "labelShelter" },
-    { key: "Community News", cls: "labelCommunity" },
-    { key: "Fundraiser", cls: "labelFundraiser" },
-    { key: "Urgent", cls: "labelUrgent" }
+    { key: "Indoor", cls: "labelIndoor", scopes: ["opportunity"] },
+    { key: "Outdoor", cls: "labelOutdoor", scopes: ["opportunity"] },
+    { key: "Weekend", cls: "labelWeekend", scopes: ["opportunity"] },
+    { key: "Weekday", cls: "labelWeekday", scopes: ["opportunity"] },
+    { key: "Shelter Update", cls: "labelShelter", scopes: ["announcement", "opportunity"] },
+    { key: "Community News", cls: "labelCommunity", scopes: ["announcement", "opportunity"] },
+    { key: "Fundraiser", cls: "labelFundraiser", scopes: ["announcement", "opportunity"] },
+    { key: "Urgent", cls: "labelUrgent", scopes: ["announcement", "opportunity"] },
 ];
 
-export default function LabelPicker({ selected, onChange }) {
-    const available = LABELS.filter((l) => !selected.includes(l.key));
+export default function LabelPicker({ selected, onChange, scope = "opportunity" }) {
+    const scopedLabels = LABELS.filter((l) => l.scopes.includes(scope));
+    const available = scopedLabels.filter((l) => !selected.includes(l.key));
 
     const addLabel = (key) => onChange([...selected, key]);
     const removeLabel = (key) => onChange(selected.filter((l) => l !== key));

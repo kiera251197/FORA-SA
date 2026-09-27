@@ -14,7 +14,7 @@ async function getAll() {
         LEFT JOIN opportunity_tags ot ON o.id = ot.opportunity_id
         LEFT JOIN labels l ON ot.label_id = l.id
         GROUP BY o.id
-        ORDER BY o.id`
+        ORDER BY o.id DESC`
     );
 
     return rows.map((row) => ({

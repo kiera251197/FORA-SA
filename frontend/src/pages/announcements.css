@@ -279,6 +279,13 @@ a {
     gap: 8px;
 }
 
+.announcementsEmpty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 48px 0;
+    color: var(--lavender);
+    font-size: 1.05rem;
+}
 
 
 

@@ -5,7 +5,7 @@ import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import LabelPicker from "../../components/labelPicker";
 import "../staff/staff.css";
-import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
+import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAuth";
 
 export default function EditAnnouncement() {
     const { id } = useParams();
@@ -29,7 +29,7 @@ export default function EditAnnouncement() {
     const handleSave = async () => {
         setSaving(true);
         try {
-            const res = await fetch(`/api/announcements/${id}`, {
+            const res = await staffFetch(`/api/announcements/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title, description, labels: labels.join(",") }),
@@ -46,7 +46,7 @@ export default function EditAnnouncement() {
     const handleDelete = async () => {
         if (!window.confirm("Delete this announcement? This can't be undone.")) return;
         try {
-            const res = await fetch(`/api/announcements/${id}`, { method: "DELETE" });
+            const res = await staffFetch(`/api/announcements/${id}`, { method: "DELETE" });
             if (!res.ok) throw new Error("Failed to delete");
             navigate("/staff/dashboard");
         } catch (err) {

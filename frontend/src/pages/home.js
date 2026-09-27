@@ -30,53 +30,36 @@ const quickActions = [
   },
 ];
 
-const opportunities = [
-  { 
-    title: "Dog Walking",
-    text: "Give shelter dogs daily exercise and vital human interaction to help them thrive."
-  },
-  { 
-    title: "Cattery Care",
-    text: "Care for rescued cats and kittens through feeding, socialization and gentle handling."
-  },
-  { 
-    title: "Shelter Maintenance",
-    text: "Keep our shelters safe, clean and welcoming for animals and visitors alike."
-  },
-  { 
-    title: "Community",
-    text: "Join the FORA community on Facebook and Instagram for regular updates and volunteering opportunities."
-  },
-];
-
-const fallbackAnnouncements = [
-  { id: 1, 
-    title: "Adoption Day", 
-    description: "We urgently need 8 volunteers this Saturday for our Adoption Day. If you can help between 09:00 and 17:00, please sign up using the volunteer form!", 
-    labels: ["Urgent"] 
-  },
-  { id: 2, 
-    title: "Food Supply Drive", 
-    description: "Our food supply for our animals is always a main priority. We are asking the community to donate food items or monetary contributions to help keep our animals well-fed and healthy.", 
-    labels: ["Urgent"] 
-  },
-  { 
-    id: 3, 
-    title: "Shelter Maintenance", 
-    description: "Help keep our rescue safe, clean and welcoming. Tasks include painting, repairs, gardening and general maintenance.", 
-    labels: [] 
-  },
-];
-
 export default function Home() {
-  const [announcements, setAnnouncements] = useState(fallbackAnnouncements);
+  const [announcements, setAnnouncements] = useState([]);
+  const [opportunities, setOpportunities] = useState([]);
 
   useEffect(() => {
-    fetch("/api/announcements?limit=3")
+    fetch("/api/opportunities")
       .then((res) => (res.ok ? res.json() : Promise.reject()))
-      .then(setAnnouncements)
-      .catch(() => {});
+      .then((data) => setOpportunities((data || []).slice(0, 4)))
+      .catch(() => setOpportunities([]));
   }, []);
+
+  useEffect(() => {
+    fetch("/api/announcements?limit=5")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => setAnnouncements(data || []))
+      .catch(() => setAnnouncements([]));
+  }, []);
+
+  const labelDotClassMap = {
+    Urgent: "dotUrgent",
+    "Shelter Update": "dotShelter",
+    "Community News": "dotCommunity",
+    Fundraiser: "dotFundraiser",
+  };
+
+  function getNormalizedLabels(rawLabels) {
+    if (!rawLabels) return [];
+    if (Array.isArray(rawLabels)) return rawLabels;
+    return rawLabels.split(",").map((l) => l.trim());
+  }
 
   return (
     <div className="home">
@@ -114,17 +97,21 @@ export default function Home() {
             <p>Find a role that fits your time, skills and passion.</p>
           </div>
           <div className="oppsGrid">
-            {opportunities.map(({ title, text }) => (
-              <article key={title} className="oppCard">
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <Link to="/register" className="btn btnIndigo">
-                  <img src={volunteerIcon} alt="" />
-                  Volunteer
-                </Link>
-              </article>
-            ))}
-          </div>
+            {opportunities.length === 0 ? (
+                <p style={{ color: "var(--white)" }}>No opportunities available right now.</p>
+            ) : (
+                opportunities.map((opp) => (
+                    <article key={opp.id} className="oppCard" id="oppCard">
+                        <h3>{opp.title}</h3>
+                        <p>{opp.description}</p>
+                        <Link to="/opportunities" className="btn btnIndigo">
+                            <img src={volunteerIcon} alt="" />
+                            Volunteer
+                        </Link>
+                    </article>
+                ))
+            )}
+        </div>
         </section>
 
         {/* Announcements */}
@@ -138,13 +125,17 @@ export default function Home() {
             <Link to="/announcements" className="btn btnTeal">View All <FiArrowRight aria-hidden="true" /></Link>
           </div>
           <ul className="announcements">
-            {announcements.map((a) => (
-              <li key={a.id}>
-                <span className={`dot ${a.labels?.includes("Urgent") ? "dotUrgent" : "dotInfo"}`} />
-                <span className="announcementsText">{a.title}</span>
-              </li>
-            ))}
-          </ul>
+            {announcements.map((a) => {
+              const primaryLabel = getNormalizedLabels(a.labels)[0];
+              const dotClass = labelDotClassMap[primaryLabel] || "dotInfo";
+              return (
+                  <li key={a.id}>
+                      <span className={`dot ${dotClass}`} />
+                      <span className="announcementsText">{a.title}</span>
+                  </li>
+              );
+          })}
+        </ul>
         </section>
 
         {/* Volunteer form */}
