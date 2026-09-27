@@ -5,7 +5,7 @@ import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import LabelPicker from "../../components/labelPicker";
 import "../staff/staff.css";
-import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
+import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAuth";
 
 export default function EditOpportunity() {
     const { id } = useParams();
@@ -17,12 +17,14 @@ export default function EditOpportunity() {
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
     const [saving, setSaving] = useState(false);
+    const [description, setDescription] = useState("");
 
     useEffect(() => {
         fetch(`/api/opportunities/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setTitle(data.title);
+                setDescription(data.description || "");
                 setLocation(data.location);
                 setHours(data.hours);
                 setLabels(data.tags || []);
@@ -42,13 +44,14 @@ export default function EditOpportunity() {
         const data = new FormData();
         
         data.append("title", title);
+        data.append("description", description);
         data.append("location", location);
         data.append("hours", hours);
         data.append("tags", labels.join(","));
         if (imageFile) data.append("image", imageFile);
 
         try {
-            const res = await fetch(`/api/opportunities/${id}`, { method: "PUT", body: data });
+            const res = await staffFetch(`/api/opportunities/${id}`, { method: "PUT", body: data });
             if (!res.ok) throw new Error("Failed to save");
             navigate("/staff/dashboard");
         } catch (err) {
@@ -61,7 +64,7 @@ export default function EditOpportunity() {
     const handleDelete = async () => {
         if (!window.confirm("Delete this opportunity? This can't be undone.")) return;
         try {
-            const res = await fetch(`/api/opportunities/${id}`, { method: "DELETE" });
+            const res = await staffFetch(`/api/opportunities/${id}`, { method: "DELETE" });
             if (!res.ok) throw new Error("Failed to delete");
             navigate("/staff/dashboard");
         } catch (err) {
@@ -87,6 +90,11 @@ export default function EditOpportunity() {
                     <label className="staffField">
                         <span>Heading / Title:</span>
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    </label>
+
+                    <label className="staffField">
+                        <span>Description:</span>
+                        <textarea rows="4" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </label>
 
                     <div className="staffFieldRow">

@@ -11,7 +11,7 @@ import EditOpportunity from './pages/staff/editOpportunity';
 import StaffLogin from './pages/staff/login';
 import StaffDashboard from './pages/staff/dashboard';
 import Announcements from './pages/announcements';
-
+import RequireStaffAuth from './components/requireStaffAuth';
 
 function App() {
   return (
@@ -23,11 +23,11 @@ function App() {
       <Route path="/opportunities" element={<Opportunities />} />
       <Route path="/announcements" element={<Announcements />} />
       <Route path="/staff/login" element={<StaffLogin />} />
-      <Route path="/staff/dashboard" element={<StaffDashboard />} />
-      <Route path="/staff/announcements/new" element={<AddAnnouncement />} />
-      <Route path="/staff/announcements/:id/edit" element={<EditAnnouncement />} />
-      <Route path="/staff/opportunities/new" element={<AddOpportunity />} />
-      <Route path="/staff/opportunities/:id/edit" element={<EditOpportunity />} />
+      <Route path="/staff/dashboard" element={<RequireStaffAuth><StaffDashboard /></RequireStaffAuth>} />
+      <Route path="/staff/announcements/new" element={<RequireStaffAuth><AddAnnouncement /></RequireStaffAuth>} />
+      <Route path="/staff/announcements/:id/edit" element={<RequireStaffAuth><EditAnnouncement /></RequireStaffAuth>} />
+      <Route path="/staff/opportunities/new" element={<RequireStaffAuth><AddOpportunity /></RequireStaffAuth>} />
+      <Route path="/staff/opportunities/:id/edit" element={<RequireStaffAuth><EditOpportunity /></RequireStaffAuth>} />
     </Routes>
   );
 }

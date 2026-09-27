@@ -5,7 +5,7 @@ import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import LabelPicker from "../../components/labelPicker";
 import "../staff/staff.css";
-import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
+import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAuth";
 
 export default function AddOpportunity() {
     const navigate = useNavigate();
@@ -16,6 +16,7 @@ export default function AddOpportunity() {
     const [imageFile, setImageFile] = useState(null);
     const [preview, setPreview] = useState(null);
     const [saving, setSaving] = useState(false);
+    const [description, setDescription] = useState("");
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -28,13 +29,14 @@ export default function AddOpportunity() {
         const data = new FormData();
         
         data.append("title", title);
+        data.append("description", description);
         data.append("location", location);
         data.append("hours", hours);
         data.append("tags", labels.join(","));
         if (imageFile) data.append("image", imageFile);
 
         try {
-            const res = await fetch("/api/opportunities", { method: "POST", body: data });
+            const res = await staffFetch("/api/opportunities", { method: "POST", body: data });
             if (!res.ok) throw new Error("Failed to post");
             navigate("/staff/dashboard");
         } catch (err) {
@@ -62,6 +64,11 @@ export default function AddOpportunity() {
                     <label className="staffField">
                         <span>Heading / Title:</span>
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    </label>
+
+                    <label className="staffField">
+                        <span>Description:</span>
+                        <textarea rows="4" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </label>
 
                     <div className="staffFieldRow">
