@@ -31,7 +31,7 @@ export default function Footer() {
           </nav>
           <nav aria-label="Get involved">
             <h3>Get Involved</h3>
-            <Link to="/register">Become a Volunteer</Link>
+            <Link to="/volunteer">Become a Volunteer</Link>
             <Link to="/opportunities">Volunteer Opportunities</Link>
             <Link to="/terms">Ts & Cs for Volunteering</Link>
           </nav>

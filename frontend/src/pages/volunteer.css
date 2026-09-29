@@ -1,0 +1,336 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --navy: #171743;
+    --royalBlue: #27276e;
+    --indigo: #4343aa;
+    --cyan: #128076;
+    --teal: #1c9f93;
+    --aqua: #23d2c2;
+    --mint: #d5fffb;
+    --lavender: #dadaff;
+    --white: #ffffff;
+    --error: #e90c0c;
+    --fontTitle: "League Spartan", sans-serif;
+    --fontBody: "Red Hat Display", sans-serif;
+    --radius: 16px;
+    --shadow: 4px 8px 12px rgba(8, 8, 46, 0.5);
+    --greenShadow: 0px 0px 8px #317b74;
+    --purpleShadow: 0px 0px 8px #27276e;
+    --gutter: clamp(16px, 4vw, 32px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fontBody);
+    color: var(--navy);
+}
+
+h1, h2, h3 {
+    font-family: var(--fontTitle);
+    margin: 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 3px;
+}
+
+.container {
+    width: min(100% - 2 * var(--gutter), 1100px);
+    margin-inline: auto;
+}
+
+.volunteerPage {
+    min-height: 100vh;
+    background: #f1f1ff;
+    background: linear-gradient(
+        180deg,
+        rgba(241, 241, 255, 1) 0%,
+        rgba(39, 39, 110, 1) 80%
+    );
+}
+
+
+
+
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border: 0;
+    border-radius: 12px;
+    color: var(--white);
+    font-family: var(--fontBody);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btnTeal {
+    background: radial-gradient(circle, rgba(89, 170, 163, 1) 0%, rgba(22, 117, 108, 1) 100%);
+    box-shadow: var(--greenShadow);
+}
+
+.btnTeal:hover:not(:disabled) {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.02);
+}
+
+.btnTeal:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+/* Hero */
+.hero {
+    position: relative;
+}
+
+.volunteerHero picture {
+    display: block;
+}
+
+.heroImg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+/* Intro */
+.section {
+    margin-top: 48px;
+}
+
+.volunteerIntro h1 {
+    color: var(--navy);
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+}
+
+.volunteerIntro p {
+    margin: 0;
+    color: var(--navy);
+}
+
+
+
+
+/* Info cards */
+.infoGrid {
+    display: grid;
+    gap: 20px;
+}
+
+.infoCard {
+    padding: 28px 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: linear-gradient(160deg, var(--white), var(--mint));
+}
+
+.infoCard h2 {
+    color: var(--teal);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.infoList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.infoList li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+}
+
+.infoIcon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    color: var(--teal);
+    font-size: 1.2rem;
+}
+
+
+
+
+/* Form card */
+.formCard {
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background: var(--white);
+}
+
+.formTitle {
+    color: var(--navy);
+    font-size: 1.75rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 24px;
+}
+
+.formSectionHeading {
+    color: var(--teal);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    margin: 28px 0 16px;
+}
+
+.formSectionHeading:first-of-type {
+    margin-top: 0;
+}
+
+.formRow {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 4px;
+}
+
+.formField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.formField em {
+    color: var(--error);
+    font-style: normal;
+}
+
+.formField input,
+.formField textarea {
+    padding: 14px 16px;
+    border: 1px solid var(--lavender);
+    border-radius: 10px;
+    font-family: var(--fontBody);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--navy);
+    resize: vertical;
+}
+
+.formField textarea::placeholder,
+.formField input::placeholder {
+    color: #8888a8;
+}
+
+.formField select {
+    padding: 14px 16px;
+    border: 1px solid var(--lavender);
+    border-radius: 10px;
+    font-family: var(--fontBody);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--navy);
+    background: var(--white);
+}
+
+.formField select:invalid {
+    color: #8888a8;
+}
+
+
+
+
+/* Consent */
+.consentBox {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 16px 0 24px;
+    padding: 24px;
+    border-radius: var(--radius);
+    background: #6868b5;
+    background: radial-gradient( circle,rgba(104, 104, 181, 1) 0%, rgba(39, 39, 110, 1) 100% );
+    color: var(--white);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    cursor: pointer;
+}
+
+.consentBox input {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    accent-color: var(--teal);
+    cursor: pointer;
+}
+
+.consentBox a {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.formSubmit {
+    width: 100%;
+}
+
+.formSuccess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 0;
+    padding: 16px 24px;
+    border-radius: 12px;
+    background: #6868b5;
+    background: radial-gradient(
+    circle,
+    rgba(104, 104, 181, 1) 0%,
+    rgba(39, 39, 110, 1) 100% );
+    box-shadow: var(--purpleShadow);
+    color: var(--white);
+    font-weight: 600;
+}
+
+
+
+
+/* Responsiveness: Tablet */
+@media (min-width: 834px) {
+    .formRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsiveness: Desktop */
+@media (min-width: 1024px) {
+    .section {
+        margin-top: 64px;
+    }
+
+    .infoGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

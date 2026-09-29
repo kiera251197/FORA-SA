@@ -115,10 +115,7 @@ export default function Opportunities() {
                                         )}
                                     </div>
 
-                                    <Link to="/register" className="btn btnTeal" id="oppCardBtn">
-                                        <img src={volunteerIcon} alt="" />
-                                        Volunteer
-                                    </Link>
+                                    <Link to={`/volunteer?opportunity=${opp.id}`} className="btn btnTeal" id="oppCardBtn">Volunteer</Link>
                                 </div>
                             </article>
                         ))

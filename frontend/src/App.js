@@ -12,6 +12,7 @@ import StaffLogin from './pages/staff/login';
 import StaffDashboard from './pages/staff/dashboard';
 import Announcements from './pages/announcements';
 import RequireStaffAuth from './components/requireStaffAuth';
+import Volunteer from './pages/volunteer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/story" element={<Story />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/volunteer" element={<Volunteer />} />
       <Route path="/opportunities" element={<Opportunities />} />
       <Route path="/announcements" element={<Announcements />} />
       <Route path="/staff/login" element={<StaffLogin />} />

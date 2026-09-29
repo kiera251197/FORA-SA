@@ -79,7 +79,7 @@ export default function EditAnnouncement() {
                         <textarea rows="5" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </label>
 
-                    <LabelPicker selected={labels} onChange={setLabels} />
+                    <LabelPicker selected={labels} onChange={setLabels} scope="announcement" />
 
                     <div className="staffCardActions">
                         <button type="button" className="btn btnOutline" onClick={() => navigate("/staff/dashboard")}>

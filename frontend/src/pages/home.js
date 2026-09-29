@@ -14,13 +14,13 @@ const quickActions = [
     icon: FiUser, 
     title: "Register", 
     text: "New volunteer? Fill out our registration form", 
-    to: "/register" 
+    to: "/volunteer" 
   },
   { 
     icon: FiClock, 
     title: "Book a Shift",
     text: "Schedule your time", 
-    to: "/register" 
+    to: "/volunteer" 
   },
   { 
     icon: FiMail, 
@@ -142,10 +142,9 @@ export default function Home() {
         <section className="cta">
           <h2>Willing To Help Out?</h2>
           <p>
-            Please take look at our volunteer form (compulsory for all FORA volunteers) and fill out your preferred
-            activities and skills. This helps FORA to better plan for volunteer days.
+            Please take look at our volunteer form (compulsory for all FORA volunteers) and fill out your preferred activities and skills. This helps FORA to better plan for volunteer days.
           </p>
-          <Link to="/volunteer-form" className="btn btnTeal"><FiEye aria-hidden="true" /> View Form</Link>
+          <Link to="/volunteer" className="btn btnTeal"><FiEye aria-hidden="true" /> View Form</Link>
         </section>
       </main>
 

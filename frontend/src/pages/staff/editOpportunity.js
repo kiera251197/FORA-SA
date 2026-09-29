@@ -123,7 +123,7 @@ export default function EditOpportunity() {
                         </label>
                     </div>
 
-                    <LabelPicker selected={labels} onChange={setLabels} />
+                    <LabelPicker selected={labels} onChange={setLabels} scope="opportunity" />  
 
                     <div className="staffCardActions">
                         <button type="button" className="btn btnOutline" onClick={() => navigate("/staff/dashboard")}>

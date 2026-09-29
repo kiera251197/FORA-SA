@@ -1,0 +1,93 @@
+:root {
+    --navy: #171743;
+    --royalBlue: #27276e;
+    --indigo: #4343aa;
+    --cyan: #128076;
+    --teal: #1c9f93;
+    --aqua: #23d2c2;
+    --mint: #d5fffb;
+    --lavender: #dadaff;
+    --white: #ffffff;
+    --error: #e90c0c;
+    --fontTitle: "League Spartan", sans-serif;
+    --fontBody: "Red Hat Display", sans-serif;
+    --radius: 16px;
+    --shadow: 4px 8px 12px rgba(8, 8, 46, 0.5);
+    --greenShadow: 0px 0px 8px #317b74;
+    --purpleShadow: 0px 0px 8px #27276e;
+    --gutter: clamp(16px, 4vw, 32px);
+}
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(23, 23, 67, 0.6);
+}
+
+.modalCard {
+    position: relative;
+    width: min(100%, 560px);
+    padding: 48px 32px 40px;
+    border-radius: 20px;
+    text-align: center;
+    background: linear-gradient(160deg, #ffffff, #bafcf5);
+    box-shadow: 4px 8px 24px rgba(8, 8, 46, 0.35);
+}
+
+.modalClose {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--royalBlue);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.modalClose:hover {
+    background: rgba(23, 23, 67, 0.2);
+}
+
+.modalIcon {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1c9f93 0%, #08544c 100%);
+    color: #ffffff;
+    font-size: 2rem;
+    box-shadow: 0 0 8px #317b74;
+}
+
+.modalTitle {
+    color: var(--cyan);
+    font-family: "League Spartan", sans-serif;
+    font-size: 1.75rem;
+    letter-spacing: 0.02em;
+    margin: 0 0 20px;
+}
+
+.modalText {
+    margin: 0;
+    color: var(--navy);
+    line-height: 1.6;
+}
+
+@media (min-width: 834px) {
+    .modalCard {
+        padding: 56px 64px 48px;
+    }
+}

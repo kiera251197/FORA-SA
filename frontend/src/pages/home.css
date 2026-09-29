@@ -308,7 +308,7 @@ a {
 
 /* Headings */
 .section {
-  margin-top: 64px;
+  margin-top: 64px !important;
 }
 
 .subHeading {
@@ -579,7 +579,7 @@ a {
 .footerCopy {
   text-align: center;
   font-size: 0.8rem;
-  margin: 20px 0 0;
+  margin: 16px 0 0 !important;
 }
 
 
