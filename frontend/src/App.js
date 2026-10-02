@@ -13,6 +13,9 @@ import StaffDashboard from './pages/staff/dashboard';
 import Announcements from './pages/announcements';
 import RequireStaffAuth from './components/requireStaffAuth';
 import Volunteer from './pages/volunteer';
+import ManageAnnouncements from './pages/staff/manageAnnouncements';
+import ManageOpportunities from './pages/staff/manageOpportunities';
+import VolunteerApplications from './pages/staff/volunteerApplications';
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
       <Route path="/staff/announcements/:id/edit" element={<RequireStaffAuth><EditAnnouncement /></RequireStaffAuth>} />
       <Route path="/staff/opportunities/new" element={<RequireStaffAuth><AddOpportunity /></RequireStaffAuth>} />
       <Route path="/staff/opportunities/:id/edit" element={<RequireStaffAuth><EditOpportunity /></RequireStaffAuth>} />
+      <Route path="/staff/announcements" element={<RequireStaffAuth><ManageAnnouncements /></RequireStaffAuth>} />
+      <Route path="/staff/opportunities" element={<RequireStaffAuth><ManageOpportunities /></RequireStaffAuth>} />
+      <Route path="/staff/volunteer-applications" element={<RequireStaffAuth><VolunteerApplications /></RequireStaffAuth>} />
     </Routes>
   );
 }
