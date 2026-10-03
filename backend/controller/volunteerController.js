@@ -19,4 +19,15 @@ async function list(req, res) {
     }
 }
 
-module.exports = { create, list };
+async function getOne(req, res) {
+    try {
+        const application = await Volunteer.getById(req.params.id);
+        if (!application) return res.status(404).json({ error: "Not found" });
+        res.json(application);
+    } catch (err) {
+        console.error("Failed to fetch volunteer application:", err);
+        res.status(500).json({ error: "Could not load application" });
+    }
+}
+
+module.exports = { create, list, getOne };

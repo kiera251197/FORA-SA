@@ -16,6 +16,7 @@ import Volunteer from './pages/volunteer';
 import ManageAnnouncements from './pages/staff/manageAnnouncements';
 import ManageOpportunities from './pages/staff/manageOpportunities';
 import VolunteerApplications from './pages/staff/volunteerApplications';
+import ViewVolunteerApplication from './pages/staff/viewVolunteerApplication';
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
       <Route path="/staff/opportunities/:id/edit" element={<RequireStaffAuth><EditOpportunity /></RequireStaffAuth>} />
       <Route path="/staff/announcements" element={<RequireStaffAuth><ManageAnnouncements /></RequireStaffAuth>} />
       <Route path="/staff/opportunities" element={<RequireStaffAuth><ManageOpportunities /></RequireStaffAuth>} />
-      <Route path="/staff/volunteer-applications" element={<RequireStaffAuth><VolunteerApplications /></RequireStaffAuth>} />
+      <Route path="/staff/volunteerApplications" element={<RequireStaffAuth><VolunteerApplications /></RequireStaffAuth>} />
+      <Route path="/staff/volunteerApplications/:id" element={<RequireStaffAuth><ViewVolunteerApplication /></RequireStaffAuth>} />
     </Routes>
   );
 }
