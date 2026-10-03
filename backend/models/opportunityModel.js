@@ -9,6 +9,7 @@ async function getAll() {
             o.hours_text AS hours, 
             o.location, 
             o.image_url AS image, 
+            o.created_at,
             GROUP_CONCAT(l.name SEPARATOR ',') AS tags
         FROM opportunities o
         LEFT JOIN opportunity_tags ot ON o.id = ot.opportunity_id

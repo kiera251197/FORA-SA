@@ -481,6 +481,122 @@ a {
     margin-top: 8px;
 }
 
+
+
+/* Staff list header row */
+.staffHeadRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.staffPageIntro {
+    margin: 4px 0 0;
+    color: var(--navy);
+}
+
+
+
+
+/* Filters */
+.staffFiltersRow {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 28px;
+}
+
+.filterPill {
+    flex: none;
+    padding: 10px 20px;
+    border: 1.5px solid var(--indigo);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--indigo);
+    font-family: var(--fontBody);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.filterPillActive {
+    background: #4F4FA5;
+    background: radial-gradient(circle, rgba(79, 79, 165, 1) 0%, rgba(42, 42, 115, 1) 100%);
+    border-color: transparent;
+    color: var(--white);
+}
+
+.filterPill:hover {
+    background: var(--teal);
+    border-color: transparent;
+    color: var(--white);
+    transition: all 0.1s ease-in-out;
+    transform: scale(1.05);
+}
+
+/* List of items */
+.staffListGrid {
+    display: grid;
+    gap: 20px;
+}
+
+.staffListEmpty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--navy);
+    font-style: italic;
+}
+
+.staffListCard {
+    padding: 24px;
+    border: 1.5px solid var(--indigo);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--softShadow);
+}
+
+.staffListCardHead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.staffListTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.staffListEditBtn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    flex: none;
+}
+
+.staffListTitle {
+    color: var(--royalBlue);
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.staffListDate {
+    margin: 0;
+    color: #8888a8;
+    font-size: 0.9rem;
+}
+
+
+
+
+
 /* Responsiveness: Desktop */
 @media (min-width: 1024px) {
     .staffDashGrid {
@@ -497,5 +613,14 @@ a {
     .staffFooterInner {
         grid-template-columns: repeat(2, auto);
         justify-content: space-between;
+    }
+
+    .staffListGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .staffFiltersRow {
+        flex-wrap: wrap;
+        overflow-x: visible;
     }
 }
