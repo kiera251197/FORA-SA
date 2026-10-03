@@ -20,5 +20,5 @@ app.use("/api/volunteers", volunteerRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log(`FORA SA backend listening on http://localhost:${port}`);
+    console.log(`FORA SA backend running on http://localhost:${port}`);
 });

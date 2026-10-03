@@ -55,7 +55,7 @@ export default function ManageOpportunities() {
                         <h1>Opportunities</h1>
                         <p className="staffPageIntro">Add opportunities that appear in the volunteer highlights.</p>
                     </div>
-                    <Link to="/staff/opportunities/new" className="btn btnTeal">
+                    <Link to="/staff/opportunities/new" className="btn btnTeal" id="addBtn">
                         <FiPlus aria-hidden="true" /> Add
                     </Link>
                 </div>

@@ -342,6 +342,10 @@ a {
     box-shadow: var(--greenShadow);
 }
 
+#addBtn {
+    width: 20%;
+}
+
 .btnOutline {
     background: var(--white);
     border: 1.2px solid var(--indigo) !important;
@@ -593,6 +597,24 @@ a {
     font-size: 0.9rem;
 }
 
+
+
+/* Coloured Labels */
+.staffListTitle.labelUrgentText {
+    color: var(--urgentText);
+}
+
+.staffListTitle.labelShelterText {
+    color: var(--shelterText);
+}
+
+.staffListTitle.labelCommunityText {
+    color: var(--communityText);
+}
+
+.staffListTitle.labelFundraiserText {
+    color: var(--fundraiserText);
+}
 
 
 

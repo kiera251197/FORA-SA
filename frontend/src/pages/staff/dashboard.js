@@ -26,7 +26,7 @@ const dashboardCards = [
         icon: FiBell,
         title: "Volunteer Notifications",
         text: "View recently submitted volunteer registrations",
-        to: "/staff/volunteer-applications",
+        to: "/staff/volunteerApplications",
         label: "Volunteer Notifications",
     },
 ];

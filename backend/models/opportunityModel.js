@@ -62,8 +62,8 @@ async function create({ title, description, hours, location, tags, image, imageP
         const hoursFormatted = hours ? (hours.includes("hrs") ? hours : `${hours}hrs/session`) : "2hrs/session";
 
         const [result] = await connection.query(
-            `INSERT INTO opportunities (title, description, hours_text, location, image_url, image_public_id)
-             VALUES (?, ?, ?, ?, ?, ?)`,
+            `INSERT INTO opportunities (title, description, hours_text, location, image_url, image_public_id) 
+            VALUES (?, ?, ?, ?, ?, ?)`,
             [title, description, hoursFormatted, location, image, imagePublicId]
         );
         const oppId = result.insertId;
@@ -72,7 +72,7 @@ async function create({ title, description, hours, location, tags, image, imageP
         for (const tagName of tagList) {
             await connection.query(
                 `INSERT INTO opportunity_tags (opportunity_id, label_id)
-                 SELECT ?, id FROM labels WHERE name = ?`,
+                SELECT ?, id FROM labels WHERE name = ?`,
                 [oppId, tagName]
             );
         }
@@ -96,8 +96,8 @@ async function updateWithImage(id, { title, description, hours, location, tags, 
 
         await connection.query(
             `UPDATE opportunities
-             SET title = ?, description = ?, hours_text = ?, location = ?, image_url = ?, image_public_id = ?
-             WHERE id = ?`,
+            SET title = ?, description = ?, hours_text = ?, location = ?, image_url = ?, image_public_id = ?
+            WHERE id = ?`,
             [title, description, hoursFormatted, location, image, imagePublicId, id]
         );
 
@@ -141,7 +141,7 @@ async function updateWithoutImage(id, { title, description, hours, location, tag
         for (const tagName of tagList) {
             await connection.query(
                 `INSERT INTO opportunity_tags (opportunity_id, label_id)
-                 SELECT ?, id FROM labels WHERE name = ?`,
+                SELECT ?, id FROM labels WHERE name = ?`,
                 [id, tagName]
             );
         }

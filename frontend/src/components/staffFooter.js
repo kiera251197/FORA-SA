@@ -25,7 +25,13 @@ export default function StaffFooter() {
                     <nav aria-label="Staff internal portals">
                         <h3>Staff Internal Portals</h3>
                         <Link to="/staff/dashboard">Dashboard</Link>
-                        <Link to="/staff/volunteer-applications">Volunteer Applications</Link>
+                        <Link to="/staff/volunteerApplications">Volunteer Applications</Link>
+                        <Link to="/staff/opportunities">Opportunities</Link>
+                        <Link to="/staff/announcements">Announcements</Link>
+                    </nav>
+
+                    <nav aria-label="Staff internal portals">
+                        <h3>Action Hub</h3>
                         <Link to="/staff/opportunities/new">Add Opportunity</Link>
                         <Link to="/staff/announcements/new">Add Announcement</Link>
                     </nav>

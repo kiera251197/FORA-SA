@@ -8,8 +8,8 @@ async function create({
     const [result] = await pool.query(
         `INSERT INTO volunteers
             (first_name, last_name, email, phone, emergency_contact_name, emergency_contact_phone,
-             opportunity_id, shift_id, skills, motivation, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`,
+            opportunity_id, shift_id, skills, motivation, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`,
         [firstName, lastName, email, phone, emergencyContactName, emergencyContactPhone,
          opportunityId || null, shiftId || null, skills, motivation]
     );
