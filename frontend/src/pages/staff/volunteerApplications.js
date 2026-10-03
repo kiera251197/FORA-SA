@@ -4,17 +4,10 @@ import StaffFooter from "../../components/staffFooter";
 import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAuth";
 import { FiEye } from "react-icons/fi";
 import { useEffect, useState } from "react";
+import { labelClassMap } from "../../components/labelPicker";
 import "./staff.css";
 
 const filters = ["All Roles", "Indoor", "Outdoor", "Weekend", "Weekday", "Urgent"];
-
-const tagClassMap = {
-    Urgent: "labelUrgent",
-    Indoor: "labelIndoor",
-    Outdoor: "labelOutdoor",
-    Weekday: "labelWeekday",
-    Weekend: "labelWeekend",
-};
 
 export default function VolunteerApplications() {
     const navigate = useNavigate();
@@ -69,7 +62,7 @@ export default function VolunteerApplications() {
                                     <div className="staffListCardHead">
                                         <div className="staffListTags">
                                             {app.opportunity_tags?.map((tag) => (
-                                                <span key={tag} className={`labelPill ${tagClassMap[tag] || "labelIndoor"}`}>
+                                                <span key={tag} className={`labelPill ${labelClassMap[tag] || "labelIndoor"}`}>
                                                     {tag}
                                                 </span>
                                             ))}

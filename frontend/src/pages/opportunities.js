@@ -17,6 +17,9 @@ const tagClassMap = {
     "Outdoor": "tagOutdoor",
     "Weekday": "tagWeekday",
     "Weekend": "tagWeekend",
+    "Shelter Update": "tagShelter",
+    "Community News": "tagCommunity",
+    "Fundraiser": "tagFundraiser",
 };
 
 export default function Opportunities() {

@@ -3,17 +3,11 @@ import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
 import { FiPlus, FiEdit2 } from "react-icons/fi";
+import { labelClassMap } from "../../components/labelPicker";
 import { useEffect, useState } from "react";
 import "./staff.css";
 
 const filters = ["All Roles", "Fundraiser", "Shelter Update", "Community News", "Urgent"];
-
-const labelClassMap = {
-    Urgent: "labelUrgent",
-    "Shelter Update": "labelShelter",
-    "Community News": "labelCommunity",
-    Fundraiser: "labelFundraiser",
-};
 
 const labelTextClassMap = {
     Urgent: "labelUrgentText",

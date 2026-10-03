@@ -311,6 +311,24 @@ a {
 
 
 
+/* Pill Tag Colours */
+.tagShelter {
+    background: var(--shelterFill);
+    color: var(--shelterText);
+}
+
+.tagCommunity {
+    background: var(--communityFill);
+    color: var(--communityText);
+}
+
+.tagFundraiser {
+    background: var(--fundraiserFill);
+    color: var(--fundraiserText);
+}
+
+
+
 
 
 

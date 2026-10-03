@@ -11,6 +11,11 @@ export const LABELS = [
     { key: "Urgent", cls: "labelUrgent", scopes: ["announcement", "opportunity"] },
 ];
 
+export const labelClassMap = LABELS.reduce((map, label) => {
+    map[label.key] = label.cls;
+    return map;
+}, {});
+
 export default function LabelPicker({ selected, onChange, scope = "opportunity" }) {
     const scopedLabels = LABELS.filter((l) => l.scopes.includes(scope));
     const available = scopedLabels.filter((l) => !selected.includes(l.key));

@@ -10,6 +10,7 @@
     --aqua: #23d2c2;
     --mint: #d5fffb;
     --lavender: #dadaff;
+    --iris: #8787bf;
     --urgentText: #e90c0c;
     --urgentFill: #f8d2d2;
     --inOutdoorText: #5569a8;
@@ -597,6 +598,12 @@ a {
     font-size: 0.9rem;
 }
 
+.staffFormError {
+    margin: 0 0 20px;
+    color: var(--urgentText);
+    font-weight: 600;
+}
+
 
 
 /* Coloured Labels */
@@ -622,13 +629,13 @@ a {
 /* Volunteer applications list */
 .staffApplicantName {
     margin: 2px 0 0;
-    color: var(--navy);
+    color: var(--iris);
     font-weight: 600;
 }
 
 .staffApplicantContact {
     margin: 2px 0 0;
-    color: #8888a8;
+    color: var(--iris);
     font-size: 0.9rem;
 }
 

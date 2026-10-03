@@ -17,6 +17,7 @@ export default function AddOpportunity() {
     const [preview, setPreview] = useState(null);
     const [saving, setSaving] = useState(false);
     const [description, setDescription] = useState("");
+    const [error, setError] = useState(null);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -26,8 +27,9 @@ export default function AddOpportunity() {
 
     const handleSubmit = async () => {
         setSaving(true);
+        setError(null);
         const data = new FormData();
-        
+
         data.append("title", title);
         data.append("description", description);
         data.append("location", location);
@@ -37,10 +39,14 @@ export default function AddOpportunity() {
 
         try {
             const res = await staffFetch("/api/opportunities", { method: "POST", body: data });
-            if (!res.ok) throw new Error("Failed to post");
+            if (!res.ok) {
+                const body = await res.json().catch(() => ({}));
+                throw new Error(body.error || "Failed to post opportunity");
+            }
             navigate("/staff/dashboard");
         } catch (err) {
             console.error("Failed to post opportunity:", err);
+            setError(err.message);
         } finally {
             setSaving(false);
         }
@@ -60,6 +66,8 @@ export default function AddOpportunity() {
                             <FiPlus aria-hidden="true" /> {saving ? "Posting..." : "Post Opportunity"}
                         </button>
                     </div>
+
+                    {error && <p className="staffFormError">{error}</p>}
 
                     <label className="staffField">
                         <span>Heading / Title:</span>

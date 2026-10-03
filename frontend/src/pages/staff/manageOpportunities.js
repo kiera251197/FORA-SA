@@ -3,18 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { FiPlus, FiEdit2 } from "react-icons/fi";
 import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
+import { labelClassMap } from "../../components/labelPicker";
 import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
 import "./staff.css";
 
 const filters = ["All Roles", "Indoor", "Outdoor", "Weekend", "Weekday", "Urgent"];
-
-const tagClassMap = {
-    Urgent: "labelUrgent",
-    Indoor: "labelIndoor",
-    Outdoor: "labelOutdoor",
-    Weekday: "labelWeekday",
-    Weekend: "labelWeekend",
-};
 
 function formatDate(dateString) {
     if (!dateString) return "";
@@ -85,7 +78,7 @@ export default function ManageOpportunities() {
                                     <div className="staffListCardHead">
                                         <div className="staffListTags">
                                             {opp.tags?.map((tag) => (
-                                                <span key={tag} className={`labelPill ${tagClassMap[tag] || "labelIndoor"}`}>
+                                                <span key={tag} className={`labelPill ${labelClassMap[tag] || "labelIndoor"}`}>
                                                     {tag}
                                                 </span>
                                             ))}
