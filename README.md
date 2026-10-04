@@ -17,7 +17,7 @@ A digital home for shelter, care and community.
   - [How to Install](#how-to-install)
   - [File Structure](#file-structure)
 - [Features and Functionality](#features-and-functionality)
-- [Database / ERD](#database--erd)
+- [Database / ERD](#erd-diagram)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
@@ -206,9 +206,9 @@ coming soon...
 
 ---
 
-## Database / ERD
+## ERD Diagram
 
-![FORA SA Banner](https://github.com/kiera251197/FORA-SA/blob/b5bc89bc3c89a819f9f185c48b45fdcfbc057c9d/frontend/src/assets/githubImages/fora%20sa.png)
+![FORA SA Banner](https://github.com/kiera251197/FORA-SA/blob/32aef8b1bfb7e9c6e8559aad77b59f0045dd97f4/frontend/src/assets/githubImages/fora%20sa.jpg)
 
 ---
 
