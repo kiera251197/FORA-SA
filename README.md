@@ -208,7 +208,7 @@ coming soon...
 
 ## Database / ERD
 
-on its way...
+![FORA SA Banner](https://github.com/kiera251197/FORA-SA/blob/b5bc89bc3c89a819f9f185c48b45fdcfbc057c9d/frontend/src/assets/githubImages/fora%20sa.png)
 
 ---
 
