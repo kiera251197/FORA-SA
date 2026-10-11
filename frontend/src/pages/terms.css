@@ -103,7 +103,7 @@ a {
 /* Terms cards */
 .termsGrid {
     display: grid;
-    gap: 20px;
+    gap: 24px;
 }
 
 .termsCard {

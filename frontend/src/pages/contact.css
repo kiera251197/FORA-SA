@@ -16,7 +16,7 @@
     --radius: 16px;
     --shadow: 4px 8px 12px rgba(8, 8, 46, 0.5);
     --greenShadow: 0px 0px 8px #317b74;
-    --gutter: clamp(16px, 4vw, 32px);
+    --gutter: clamp(24px, 4vw, 32px);
 }
 
 * {
@@ -102,7 +102,7 @@ a {
 /* Contact cards */
 .contactCards {
     display: grid;
-    gap: 16px;
+    gap: 24px;
 }
 
 .contactCard {

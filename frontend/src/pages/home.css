@@ -31,7 +31,7 @@
   --shadow: 4px 8px 12px rgba(8, 8, 46, 0.5);
   --purpleShadow: 0px 0px 8px #27276e;
   --greenShadow: 0px 0px 8px #317b74;
-  --gutter: clamp(16px, 4vw, 32px);
+  --gutter: clamp(24px, 4vw, 32px);
 }
 
 * {
@@ -345,7 +345,7 @@ a {
 /* Opportunities */
 .oppsGrid {
   display: grid;
-  gap: 16px;
+  gap: 24px;
   margin-top: 28px;
 }
 
@@ -398,7 +398,7 @@ a {
 .announcements li {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   padding: 18px 24px;
   border-bottom: 1px solid #ddd;
 }
@@ -457,7 +457,7 @@ a {
   color: var(--white);
   display: grid;
   justify-items: center;
-  gap: 16px;
+  gap: 24px;
 }
 
 .cta h2 {
