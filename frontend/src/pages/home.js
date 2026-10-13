@@ -37,15 +37,14 @@ export default function Home() {
   const [opportunities, setOpportunities] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/opportunities`)
+    fetch(`${API_BASE_URL.replace(/\/$/, '')}/api/opportunities`)
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => setOpportunities((data || []).slice(0, 4)))
       .catch(() => setOpportunities([]));
   }, []);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/announcements?limit=5`)
-    .then((res) => (res.ok ? res.json() : Promise.reject()))
+  fetch(`${API_BASE_URL.replace(/\/$/, '')}/api/announcements?limit=5`)    .then((res) => (res.ok ? res.json() : Promise.reject()))
     .then((data) => setAnnouncements(data || []))
     .catch(() => setAnnouncements([]));
   }, []);
