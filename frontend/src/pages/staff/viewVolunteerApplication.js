@@ -4,6 +4,7 @@ import { FiCheckCircle } from "react-icons/fi";
 import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAuth";
+import { API_BASE_URL } from "../../utils/api";
 import "./staff.css";
 
 export default function ViewVolunteerApplication() {
@@ -13,7 +14,7 @@ export default function ViewVolunteerApplication() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        staffFetch(`/api/volunteers/${id}`)
+        staffFetch(`${API_BASE_URL}/api/volunteers/${id}`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => setApplication(data))
             .catch(() => setApplication(null))

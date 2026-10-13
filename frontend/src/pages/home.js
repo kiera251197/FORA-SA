@@ -8,6 +8,7 @@ import heroTablet from "../assets/images/heroHomeTablet.png";
 import heroMobile from "../assets/images/heroHomeMobile.png";
 import volunteerIcon from "../assets/icons/volunteer.svg";
 import useSeo from "../utils/useSeo";
+import { API_BASE_URL } from "../utils/api";
 import "./home.css";
 
 const quickActions = [
@@ -36,17 +37,17 @@ export default function Home() {
   const [opportunities, setOpportunities] = useState([]);
 
   useEffect(() => {
-    fetch("/api/opportunities")
+    fetch(`${API_BASE_URL}/api/opportunities`)
       .then((res) => (res.ok ? res.json() : Promise.reject()))
       .then((data) => setOpportunities((data || []).slice(0, 4)))
       .catch(() => setOpportunities([]));
   }, []);
 
   useEffect(() => {
-    fetch("/api/announcements?limit=5")
-      .then((res) => (res.ok ? res.json() : Promise.reject()))
-      .then((data) => setAnnouncements(data || []))
-      .catch(() => setAnnouncements([]));
+    fetch(`${API_BASE_URL}/api/announcements?limit=5`)
+    .then((res) => (res.ok ? res.json() : Promise.reject()))
+    .then((data) => setAnnouncements(data || []))
+    .catch(() => setAnnouncements([]));
   }, []);
 
   const labelDotClassMap = {

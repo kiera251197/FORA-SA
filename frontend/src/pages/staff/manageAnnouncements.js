@@ -5,6 +5,7 @@ import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
 import { FiPlus, FiEdit2 } from "react-icons/fi";
 import { labelClassMap } from "../../components/labelPicker";
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../../utils/api";
 import "./staff.css";
 
 const filters = ["All Roles", "Fundraiser", "Shelter Update", "Community News", "Urgent"];
@@ -32,7 +33,7 @@ export default function ManageAnnouncements() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/api/announcements?limit=100")
+        fetch(`${API_BASE_URL}/api/announcements?limit=100`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => setAnnouncements(data || []))
             .catch(() => setAnnouncements([]))

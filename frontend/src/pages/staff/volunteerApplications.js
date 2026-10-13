@@ -5,6 +5,7 @@ import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAu
 import { FiEye } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { labelClassMap } from "../../components/labelPicker";
+import { API_BASE_URL } from "../../utils/api";
 import "./staff.css";
 
 const filters = ["All Roles", "Indoor", "Outdoor", "Weekend", "Weekday", "Urgent"];
@@ -16,7 +17,7 @@ export default function VolunteerApplications() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        staffFetch("/api/volunteers")
+        staffFetch(`${API_BASE_URL}/api/volunteers`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => setApplications(data || []))
             .catch(() => setApplications([]))

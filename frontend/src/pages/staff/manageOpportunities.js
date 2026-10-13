@@ -6,6 +6,7 @@ import StaffFooter from "../../components/staffFooter";
 import { labelClassMap } from "../../components/labelPicker";
 import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
 import useSeo from "../../utils/useSeo";
+import { API_BASE_URL } from "../../utils/api";
 import "./staff.css";
 
 const filters = ["All Roles", "Indoor", "Outdoor", "Weekend", "Weekday", "Urgent"];
@@ -26,7 +27,7 @@ export default function ManageOpportunities() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/api/opportunities")
+        fetch(`${API_BASE_URL}/api/opportunities`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => setOpportunities(data || []))
             .catch(() => setOpportunities([]))

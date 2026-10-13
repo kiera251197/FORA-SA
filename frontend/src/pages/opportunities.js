@@ -6,8 +6,8 @@ import Footer from "../components/footer";
 import heroDesktop from "../assets/images/heroOppsDesktop.png";
 import heroTablet from "../assets/images/heroOppsTablet.png";
 import heroMobile from "../assets/images/heroOppsMobile.png";
-import volunteerIcon from "../assets/icons/volunteer.svg";
 import useSeo from "../utils/useSeo";
+import { API_BASE_URL } from "../utils/api";
 import "./opportunities.css";
 
 const filters = ["All Roles", "Weekday", "Weekend", "Indoor", "Outdoor", "Urgent"];
@@ -36,7 +36,7 @@ export default function Opportunities() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/api/opportunities")
+        fetch(`${API_BASE_URL}/api/opportunities`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => {
                 setOpportunities(data || []);

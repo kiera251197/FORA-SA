@@ -5,6 +5,7 @@ import heroDesktop from "../assets/images/heroAnnDesktop.png";
 import heroTablet from "../assets/images/heroAnnTablet.png";
 import heroMobile from "../assets/images/heroAnnMobile.png";
 import useSeo from "../utils/useSeo";
+import { API_BASE_URL } from "../utils/api";
 import "./announcements.css";
 
 const filters = ["All", "Urgent Requests", "Fundraisers", "Shelter Updates", "Community News"];
@@ -48,7 +49,7 @@ export default function Announcements() {
     const [activeFilter, setActiveFilter] = useState("All");
 
     useEffect(() => {
-        fetch("/api/announcements")
+        fetch(`${API_BASE_URL}/api/announcements`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => setAnnouncements(data || []))
             .catch(() => setAnnouncements([]));
