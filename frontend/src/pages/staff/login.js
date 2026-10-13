@@ -5,7 +5,7 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import { setStaffSession } from "../../utils/staffAuth";
 import useSeo from "../../utils/useSeo";
-import { API_BASE_URL } from "../utils/api";
+import { API_BASE_URL } from '../../utils/api';
 import "./login.css";
 
 
