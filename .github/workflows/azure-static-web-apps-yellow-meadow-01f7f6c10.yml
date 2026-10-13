@@ -29,7 +29,7 @@ jobs:
           app_location: "/frontend"
           api_location: ""
           output_location: "build"
-        env:
+          env:
           CI: false
           ###### End of Repository/Build Configurations ######
 
