@@ -17,8 +17,14 @@ import ManageAnnouncements from './pages/staff/manageAnnouncements';
 import ManageOpportunities from './pages/staff/manageOpportunities';
 import VolunteerApplications from './pages/staff/volunteerApplications';
 import ViewVolunteerApplication from './pages/staff/viewVolunteerApplication';
+import ReactGA from 'react-ga4';
+
+ReactGA.initialize('G-RTHBW2W4S1');
 
 function App() {
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
