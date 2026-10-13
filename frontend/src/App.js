@@ -25,6 +25,7 @@ function App() {
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: window.location.pathname });
   }, []);
+  
   return (
     <Routes>
       <Route path="/" element={<Home />} />
