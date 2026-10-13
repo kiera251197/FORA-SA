@@ -4,6 +4,7 @@ import Footer from "../components/footer";
 import heroDesktop from "../assets/images/heroAnnDesktop.png";
 import heroTablet from "../assets/images/heroAnnTablet.png";
 import heroMobile from "../assets/images/heroAnnMobile.png";
+import useSeo from "../utils/useSeo";
 import "./announcements.css";
 
 const filters = ["All", "Urgent Requests", "Fundraisers", "Shelter Updates", "Community News"];
@@ -38,7 +39,12 @@ function getNormalizedLabels(rawLabels) {
 }
 
 export default function Announcements() {
-     const [announcements, setAnnouncements] = useState([]);
+    useSeo({
+        title: "Announcements",
+        description: "Stay updated with the latest news, updates and urgent notifications from FORA.",
+    });
+    
+    const [announcements, setAnnouncements] = useState([]);
     const [activeFilter, setActiveFilter] = useState("All");
 
     useEffect(() => {
@@ -63,7 +69,7 @@ export default function Announcements() {
                 <picture>
                     <source media="(min-width: 1024px)" srcSet={heroDesktop} />
                     <source media="(min-width: 834px)" srcSet={heroTablet} />
-                    <img className="heroImg" src={heroMobile} alt="" />
+                    <img className="heroImg" src={heroMobile} alt="" fetchPriority="high"/>
                 </picture>
             </header>
 

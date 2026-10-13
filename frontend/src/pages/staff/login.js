@@ -4,10 +4,13 @@ import { FiLogIn } from "react-icons/fi";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import { setStaffSession } from "../../utils/staffAuth";
+import useSeo from "../../utils/useSeo";
 import "./login.css";
 
 
 export default function StaffLogin() {
+    useSeo({ title: "Staff Sign In", noindex: true });
+
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

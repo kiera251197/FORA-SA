@@ -7,6 +7,7 @@ import heroMobile from "../assets/images/heroVolunteerMobile.png";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import ThankYouModal from "../components/thankYouModal";
+import useSeo from "../utils/useSeo";
 import "./volunteer.css";
 
 const whyVolunteer = [
@@ -36,6 +37,11 @@ const infoCards = [
 ];
 
 export default function Volunteer() {
+    useSeo({
+        title: "Become a Volunteer",
+        description: "Register to volunteer at FORA SA. Choose an opportunity and a shift that suits you.",
+    });
+    
     const [searchParams] = useSearchParams();
     const preselectedOpportunity = searchParams.get("opportunity") || "";
 
@@ -95,7 +101,7 @@ export default function Volunteer() {
                 <picture>
                     <source media="(min-width: 1024px)" srcSet={heroDesktop} />
                     <source media="(min-width: 834px)" srcSet={heroTablet} />
-                    <img className="heroImg" src={heroMobile} alt="" />
+                    <img className="heroImg" src={heroMobile} alt="" fetchPriority="high"/>
                 </picture>
             </header>
 

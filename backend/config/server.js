@@ -10,8 +10,12 @@ const shiftRoutes = require("../routes/shiftRoutes");
 const volunteerRoutes = require("../routes/volunteerRoutes");
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+
+const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:3000")
+    .split(",")
+    .map((o) => o.trim());
+app.use(cors({ origin: allowedOrigins }));app.use(express.json());
+
 app.use("/api/staff", staffRoutes);
 
 app.use("/api/announcements", announcementRoutes);

@@ -3,6 +3,7 @@ import Footer from "../components/footer";
 import heroDesktop from "../assets/images/heroTermsDesktop.png";
 import heroTablet from "../assets/images/heroTermsTablet.png";
 import heroMobile from "../assets/images/heroTermsMobile.png";
+import useSeo from "../utils/useSeo";
 import "./terms.css";
 
 const termsCards = [
@@ -51,6 +52,11 @@ const termsCards = [
 ];
 
 export default function Terms() {
+  useSeo({
+    title: "Volunteer Terms",
+    description: "How volunteering at FORA works: where to start, fees and age requirements",
+  });
+  
   return (
     <div className="terms">
       <header className="hero termsHero">
@@ -58,7 +64,7 @@ export default function Terms() {
         <picture>
             <source media="(min-width: 1024px)" srcSet={heroDesktop} />
             <source media="(min-width: 834px)" srcSet={heroTablet} />
-            <img className="heroImg" src={heroMobile} alt="" />
+            <img className="heroImg" src={heroMobile} alt="" fetchPriority="high"/>
         </picture>
       </header>
 

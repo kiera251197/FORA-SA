@@ -5,6 +5,7 @@ import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import { labelClassMap } from "../../components/labelPicker";
 import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
+import useSeo from "../../utils/useSeo";
 import "./staff.css";
 
 const filters = ["All Roles", "Indoor", "Outdoor", "Weekend", "Weekday", "Urgent"];

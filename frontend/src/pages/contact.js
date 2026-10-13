@@ -4,6 +4,7 @@ import Footer from "../components/footer";
 import heroDesktop from "../assets/images/heroContactDesktop.png";
 import heroTablet from "../assets/images/heroContactTablet.png";
 import heroMobile from "../assets/images/heroContactMobile.png";
+import useSeo from "../utils/useSeo";
 import "./contact.css";
 
 const contactDetails = [
@@ -40,6 +41,11 @@ const feeItems = [
 ];
 
 export default function Contact() {
+    useSeo({
+        title: "Contact FORA",
+        description: "Contact FORA SA, plus adoption procedures and fees.",
+    });
+
     return (
         <div className="contact">
             <header className="hero contactHero">
@@ -47,7 +53,7 @@ export default function Contact() {
                 <picture>
                     <source media="(min-width: 1024px)" srcSet={heroDesktop} />
                     <source media="(min-width: 834px)" srcSet={heroTablet} />
-                    <img className="heroImg" src={heroMobile} alt="" />
+                    <img className="heroImg" src={heroMobile} alt="" fetchPriority="high"/>
                 </picture>
             </header>
 

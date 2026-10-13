@@ -23,8 +23,6 @@ export function isStaffAuthenticated() {
     return Boolean(getStaffToken());
 }
 
-// Use this instead of fetch() for any staff request that creates, edits or
-// deletes data - it attaches the auth token automatically.
 export function staffFetch(url, options = {}) {
     const token = getStaffToken();
     return fetch(url, {

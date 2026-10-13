@@ -7,6 +7,7 @@ import heroDesktop from "../assets/images/heroHomeDesktop.png";
 import heroTablet from "../assets/images/heroHomeTablet.png";
 import heroMobile from "../assets/images/heroHomeMobile.png";
 import volunteerIcon from "../assets/icons/volunteer.svg";
+import useSeo from "../utils/useSeo";
 import "./home.css";
 
 const quickActions = [
@@ -61,14 +62,20 @@ export default function Home() {
     return rawLabels.split(",").map((l) => l.trim());
   }
 
+  useSeo({
+      title: "Home",
+      description: "Join FORA's volunteer community and help rescued animals across South Africa.",
+  });
+
   return (
     <div className="home">
       <header className="hero">
         <Navbar />
+        <h1 className="visuallyHidden">Volunteer with Friends of Rescued Animals SA</h1>
         <picture>
           <source media="(min-width: 1024px)" srcSet={heroDesktop} />
           <source media="(min-width: 834px)" srcSet={heroTablet} />
-          <img className="heroImg" src={heroMobile} alt="A golden retriever leaping across a green meadow" />
+          <img className="heroImg" src={heroMobile} alt="A golden retriever leaping across a green meadow" fetchPriority="high"/>
         </picture>
         <p className="heroCaption">
           Join FORA's <strong>volunteer community</strong> and make a real <strong>difference</strong> in

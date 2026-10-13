@@ -4,12 +4,13 @@ import Footer from "../components/footer";
 import heroDesktop from "../assets/images/heroStoryDesktop.png";
 import heroTablet from "../assets/images/heroStoryTablet.png";
 import heroMobile from "../assets/images/heroStoryMobile.png";
+import useSeo from "../utils/useSeo";
 import "../pages/story.css";
 
 const pillars = [
   {
     icon: FiEye,
-    title: "Our Vission",
+    title: "Our Vision",
     text: "FORA exists to rescue, protect, and improve the lives of abandoned, abused, and neglected animals while promoting responsible pet ownership through compassion, community involvement, and education.",
   },
   {
@@ -30,20 +31,25 @@ const pillars = [
 ];
 
 export default function Story() {
+  useSeo({
+    title: "Our Story",
+    description: "Learn about FORA SA's mission, vision, objectives, and values in rescuing and rehoming abandoned and neglected animals.",
+  });
+
   return (
     <div className="story">
       <header className="hero storyHero">
         <Navbar />
-        <picture>
+        <picture >
             <source media="(min-width: 1024px)" srcSet={heroDesktop} />
             <source media="(min-width: 834px)" srcSet={heroTablet} />
-            <img className="heroImg" src={heroMobile} alt="A golden retriever leaping across a green meadow" />
+            <img className="heroImg" src={heroMobile} alt="A golden retriever leaping across a green meadow" fetchPriority="high" />
         </picture>
       </header>
 
       <main className="container">
         <section className="section storyIntro">
-            <h2>Our Story</h2>
+            <h1>Our Story</h1>
             <p>
                 Friends of Rescued Animals (FORA SA) is a local non-profit organisation dedicated to rescuing, rehabilitating, and rehoming abandoned and neglected dogs and cats. Through the support of volunteers, donations, and community involvement, FORA gives vulnerable animals a second chance at finding safe, loving homes.
             </p>

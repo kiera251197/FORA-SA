@@ -7,6 +7,7 @@ import heroDesktop from "../assets/images/heroOppsDesktop.png";
 import heroTablet from "../assets/images/heroOppsTablet.png";
 import heroMobile from "../assets/images/heroOppsMobile.png";
 import volunteerIcon from "../assets/icons/volunteer.svg";
+import useSeo from "../utils/useSeo";
 import "./opportunities.css";
 
 const filters = ["All Roles", "Weekday", "Weekend", "Indoor", "Outdoor", "Urgent"];
@@ -22,7 +23,14 @@ const tagClassMap = {
     "Fundraiser": "tagFundraiser",
 };
 
+const optimised = (url) => url?.replace("/upload/", "/upload/f_auto,q_auto,w_700/");
+
 export default function Opportunities() {
+    useSeo({
+        title: "Volunteer Opportunities",
+        description: "Explore volunteer opportunities at FORA SA. Find the right role for you and make a difference in the lives of animals.",
+    });
+
     const [opportunities, setOpportunities] = useState([]);
     const [activeFilter, setActiveFilter] = useState("All Roles");
     const [loading, setLoading] = useState(true);
@@ -53,7 +61,7 @@ export default function Opportunities() {
                 <picture>
                     <source media="(min-width: 1024px)" srcSet={heroDesktop} />
                     <source media="(min-width: 834px)" srcSet={heroTablet} />
-                    <img className="heroImg" src={heroMobile} alt="" />
+                    <img className="heroImg" src={heroMobile} alt="" fetchPriority="high"/>
                 </picture>
             </header>
 
@@ -88,7 +96,11 @@ export default function Opportunities() {
                             <article key={opp.id} className="oppCard">
                                 {opp.image && (
                                     <div className="oppCardImgWrap">
-                                        <img className="oppCardImg" src={opp.image} alt={opp.title} />
+                                        <img className="oppCardImg" 
+                                        src={optimised(opp.image)} 
+                                        alt={opp.title} 
+                                        loading="lazy" 
+                                        decoding="async"/>
                                     </div>
                                 )}
                                 <div className="oppCardBody">
