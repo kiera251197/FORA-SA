@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import { setStaffSession } from "../../utils/staffAuth";
 import useSeo from "../../utils/useSeo";
+import { API_BASE_URL } from "../utils/api";
 import "./login.css";
 
 
@@ -23,7 +24,7 @@ export default function StaffLogin() {
         setSubmitting(true);
 
         try {
-            const res = await fetch("/api/staff/login", {
+            const res = await fetch(`${API_BASE_URL}/api/staff/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
