@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/744ec392-d457-41d1-a8b3-b7ed8db82b3c/resourceGroups/fora-resource-group/providers/Microsoft.Web/sites/fora-backend",
+    "appService.deploySubpath": "backend"
 }

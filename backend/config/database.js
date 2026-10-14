@@ -12,6 +12,10 @@ const pool = mysql.createPool({
   ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : false,
 });
 
+pool.pool.on("connection", (conn) => {
+    conn.query("SET SESSION sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+});
+
 pool.getConnection()
   .then((conn) => {
     console.log("MySQL connected successfully");
