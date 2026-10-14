@@ -8,6 +8,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import ThankYouModal from "../components/thankYouModal";
 import useSeo from "../utils/useSeo";
+import { API_BASE_URL } from "../utils/api";
 import "./volunteer.css";
 
 const whyVolunteer = [
@@ -60,12 +61,12 @@ export default function Volunteer() {
     const [submitted, setSubmitted] = useState(false);
 
     useEffect(() => {
-        fetch("/api/opportunities")
+        fetch(`${API_BASE_URL}/api/opportunities`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => setOpportunities(data || []))
             .catch(() => setOpportunities([]));
 
-        fetch("/api/shifts")
+        fetch(`${API_BASE_URL}/api/shifts`)
             .then((res) => (res.ok ? res.json() : Promise.reject()))
             .then((data) => setShifts(data || []))
             .catch(() => setShifts([]));
@@ -80,7 +81,7 @@ export default function Volunteer() {
         if (!agreed) return;
         setSubmitting(true);
         try {
-            const res = await fetch("/api/volunteers", {
+            const res = await fetch(`${API_BASE_URL}/api/volunteers`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),

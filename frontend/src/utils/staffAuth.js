@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "./api";
+
 const TOKEN_KEY = "fora_staff_token";
 const NAME_KEY = "fora_staff_name";
 
@@ -23,8 +25,9 @@ export function isStaffAuthenticated() {
     return Boolean(getStaffToken());
 }
 
-export function staffFetch(url, options = {}) {
+export function staffFetch(path, options = {}) {
     const token = getStaffToken();
+    const url = path.startsWith("http") ? path : `${API_BASE_URL}${path}`;
     return fetch(url, {
         ...options,
         headers: {

@@ -4,6 +4,7 @@ import { FiSave, FiSlash, FiTrash2, FiUploadCloud } from "react-icons/fi";
 import StaffNavbar from "../../components/staffNavbar";
 import StaffFooter from "../../components/staffFooter";
 import LabelPicker from "../../components/labelPicker";
+import { API_BASE_URL } from "../../utils/api";
 import "../staff/staff.css";
 import { getStaffName, clearStaffSession, staffFetch } from "../../utils/staffAuth";
 
@@ -20,13 +21,13 @@ export default function EditOpportunity() {
     const [description, setDescription] = useState("");
 
     useEffect(() => {
-        fetch(`/api/opportunities/${id}`)
+        fetch(`${API_BASE_URL}/api/opportunities/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setTitle(data.title);
                 setDescription(data.description || "");
                 setLocation(data.location);
-                setHours(data.hours);
+                setHours(parseFloat(data.hours) || "");
                 setLabels(data.tags || []);
                 setPreview(data.image);
             })
