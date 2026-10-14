@@ -22,6 +22,15 @@ const envOrigins = process.env.FRONTEND_URL
 
 const allowedOrigins = Array.from(new Set([...defaultOrigins, ...envOrigins]));
 
+//testing...
+app.get("/", (req, res) => {
+  res.send("FORA API Backend is running!");
+});
+
+app.get("/api/health", (req, res) => {
+  res.json({ status: "OK" });
+});
+
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
