@@ -213,7 +213,7 @@ coming soon...
 
 ---
 
-## About the Project
+## Website Links
 
 Deployment Using Azure:
 [FORA Connect](https://www.forasaconnect.co.za/)
