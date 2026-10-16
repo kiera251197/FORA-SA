@@ -17,7 +17,8 @@ A digital home for shelter, care and community.
   - [How to Install](#how-to-install)
   - [File Structure](#file-structure)
 - [Features and Functionality](#features-and-functionality)
-- [Database / ERD](#erd-diagram)
+- [Website Links](#website-links)
+- [Acknowledgements](#acknowledgements)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
@@ -212,9 +213,16 @@ coming soon...
 
 ---
 
+## About the Project
+
+Deployment Using Azure:
+[FORA Connect](https://www.forasaconnect.co.za/)
+
+---
+
 ## Acknowledgements
 
-Cloudinary, XAMPP/phpMyAdmin, React Icons and my lecturer Tsungai Katsuro.
+Cloudinary, XAMPP/phpMyAdmin, React Icons, AWS, Azure and my lecturer Tsungai Katsuro.
 
 ## License
 
