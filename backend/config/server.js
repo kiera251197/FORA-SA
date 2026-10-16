@@ -13,7 +13,9 @@ const app = express();
 
 const defaultOrigins = [
     "http://localhost:3000",
-    "https://yellow-meadow-01f7f6c10.6.azurestaticapps.net"
+    "https://yellow-meadow-01f7f6c10.6.azurestaticapps.net",
+    "https://www.forasaconnect.co.za",
+    "https://forasaconnect.co.za"
 ];
 
 const envOrigins = process.env.FRONTEND_URL
@@ -22,7 +24,7 @@ const envOrigins = process.env.FRONTEND_URL
 
 const allowedOrigins = Array.from(new Set([...defaultOrigins, ...envOrigins]));
 
-//testing...
+// testing ahhhh
 app.get("/", (req, res) => {
   res.send("FORA API Backend is running!");
 });
@@ -34,7 +36,10 @@ app.get("/api/health", (req, res) => {
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) !== -1) {
+        
+        const cleanOrigin = origin.replace(/\/$/, "");
+        
+        if (allowedOrigins.indexOf(cleanOrigin) !== -1) {
             return callback(null, true);
         }
         return callback(new Error("CORS policy error: Origin not allowed by CORS"));
