@@ -203,7 +203,13 @@ FORA-SA/
 
 ## Features and Functionality
 
-coming soon...
+Visitors landing on the site can browse featured volunteer opportunities and official shelter announcements and fill out a volunteer application form to express interest in supporting the shelter.
+
+Authenticated staff members access a protected management dashboard to publish and manage announcements, create, edit or delete volunteer opportunities with image uploads, coordinate shift schedules and review incoming volunteer applications in real time.
+
+The system is deployed on `AWS` infrastructure, using Elastic Beanstalk for the Express API, CloudFront for HTTPS and CORS management, Amplify for the React frontend with Single Page Application rewrite rules and RDS MySQL for centralised database storage.
+
+In addition to the AWS environment, the project maintains an automated `Azure` deployment pipeline using Azure Static Web Apps configured via GitHub Actions workflows (`azure-static-web-apps.yml`), utilising custom fallback routing rules (`staticwebapp.config.json`) to handle client side routes and seamless deployment environments.
 
 ---
 
