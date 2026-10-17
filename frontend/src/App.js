@@ -21,17 +21,20 @@ import ReactGA from 'react-ga4';
 import ScrollToTop from '../src/components/scrollToTop';
 import React, { useEffect } from 'react';
 
-ReactGA.initialize('G-RTHBW2W4S1');
+ReactGA.initialize('G-RTHBW2W4S1', { gtagOptions: { send_page_view: false } });
 
 function App() {
+  const location = useLocation();
+
   useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
-  }, []);
+    if (location.pathname.startsWith("/staff")) return;
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: document.title });
+  }, [location]);
 
   return (
     <>
     <ScrollToTop />
-    
+
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/story" element={<Story />} />
