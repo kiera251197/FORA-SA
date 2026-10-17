@@ -21,6 +21,8 @@ function formatDate(dateString) {
 }
 
 export default function ManageOpportunities() {
+    useSeo({ title: "Manage Opportunities", noindex: true });
+    
     const navigate = useNavigate();
     const [opportunities, setOpportunities] = useState([]);
     const [activeFilter, setActiveFilter] = useState("All Roles");

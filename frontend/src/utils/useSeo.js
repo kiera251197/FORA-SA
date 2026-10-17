@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 
+const SITE_URL = (process.env.REACT_APP_SITE_URL || "https://www.forasaconnect.co.za").replace(/\/$/, "");
+
 function upsertMeta(attr, key, content) {
+    if (!content) return;
     let el = document.head.querySelector(`meta[${attr}="${key}"]`);
     if (!el) {
         el = document.createElement("meta");
@@ -12,27 +15,38 @@ function upsertMeta(attr, key, content) {
 
 export default function useSeo({ title, description, noindex = false }) {
     useEffect(() => {
+        const blockIndexing = noindex || process.env.REACT_APP_NOINDEX === "true";
+
         const fullTitle = title
             ? `${title} | FORA Connect`
             : "FORA Connect | Friends of Rescued Animals SA";
-        const url = window.location.origin + window.location.pathname;
+            
+        const defaultDesc = description || "Support and volunteer with Friends of Rescued Animals SA.";
+        const url = SITE_URL + window.location.pathname;
 
+        // Title & Description
         document.title = fullTitle;
+        upsertMeta("name", "description", defaultDesc);
+
+        // Open Graph Meta Tags
         upsertMeta("property", "og:title", fullTitle);
+        upsertMeta("property", "og:description", defaultDesc);
         upsertMeta("property", "og:url", url);
-        upsertMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
 
-        if (description) {
-            upsertMeta("name", "description", description);
-            upsertMeta("property", "og:description", description);
-        }
+        // Robots indexing
+        upsertMeta("name", "robots", blockIndexing ? "noindex, nofollow" : "index, follow");
 
+        // Canonical URL Link Tag
         let canonical = document.head.querySelector('link[rel="canonical"]');
-        if (!canonical) {
-            canonical = document.createElement("link");
-            canonical.setAttribute("rel", "canonical");
-            document.head.appendChild(canonical);
+        if (blockIndexing) {
+            if (canonical) canonical.remove();
+        } else {
+            if (!canonical) {
+                canonical = document.createElement("link");
+                canonical.setAttribute("rel", "canonical");
+                document.head.appendChild(canonical);
+            }
+            canonical.setAttribute("href", url);
         }
-        canonical.setAttribute("href", url);
     }, [title, description, noindex]);
 }

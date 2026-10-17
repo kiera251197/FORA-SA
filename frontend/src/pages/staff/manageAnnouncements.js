@@ -5,6 +5,7 @@ import { getStaffName, clearStaffSession } from "../../utils/staffAuth";
 import { FiPlus, FiEdit2 } from "react-icons/fi";
 import { labelClassMap } from "../../components/labelPicker";
 import { useEffect, useState } from "react";
+import useSeo from "../../utils/useSeo";
 import { API_BASE_URL } from "../../utils/api";
 import "./staff.css";
 
@@ -27,6 +28,8 @@ function formatDate(dateString) {
 }
 
 export default function ManageAnnouncements() {
+    useSeo({ title: "Manage Announcements", noindex: true });
+    
     const navigate = useNavigate();
     const [announcements, setAnnouncements] = useState([]);
     const [activeFilter, setActiveFilter] = useState("All Roles");
