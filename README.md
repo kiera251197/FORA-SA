@@ -18,9 +18,9 @@ A digital home for shelter, care and community.
   - [File Structure](#file-structure)
 - [Features and Functionality](#features-and-functionality)
 - [Final Outcome](#final-outcome)
+  - [Live Website Links](#live-website-links)
   - [Mockups](#mockups)
   - [Presentation Slides](#presentation-slides)
-  - [Live Website Links](#live-website-links)
 - [Acknowledgements](#acknowledgements)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
@@ -130,76 +130,103 @@ on hand for every update.
 ### File Structure
 ```
 FORA-SA/
+├── .github/
+│   └── workflows/
+│       ├── azure-static-web-apps-yellow-meadow-01f7f6c10.yml # Azure frontend CI/CD
+│       └── main_fora-backend.yml # Azure backend CI/CD
+├── .vscode/
+├── .deployment
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── README.md
+│
 ├── backend/
-│ ├── config/
-│ │ ├── cloudinary.js
-│ │ ├── database.js
-│ │ ├── server.js
-│ │ └── upload.js
-│ ├── controller/
-│ │ ├── announcementController.js
-│ │ ├── opportunityController.js
-│ │ ├── shiftController.js
-│ │ ├── staffController.js
-│ │ └── volunteerController.js
-│ ├── models/
-│ │ ├── announcementModel.js
-│ │ ├── opportunityModel.js
-│ │ ├── shiftModel.js
-│ │ ├── staffModel.js
-│ │ └── volunteerModel.js
-│ ├── routes/
-│ │ ├── announcementRoutes.js
-│ │ ├── opportunityRoutes.js
-│ │ ├── shiftRoutes.js
-│ │ ├── staffRoutes.js
-│ │ └── volunteerRoutes.js
-│ ├── middleware/
-│ │ └── requireStaffAuth.js
-│ ├── scripts/
-│ │ └── createStaffUser.js
-│ ├── database/
-│ │ └── fora_sa.sql
-│ └── package.json
+│   ├── .deployment
+│   ├── .platform/ # AWS Elastic Beanstalk (only if you added it)
+│   │   └── nginx/conf.d/proxy.conf # raises the upload limit to 10MB
+│   ├── Procfile # AWS Elastic Beanstalk start command (only if added)
+│   ├── package.json
+│   ├── config/
+│   │   ├── cloudinary.js
+│   │   ├── database.js
+│   │   ├── server.js
+│   │   └── upload.js
+│   ├── controller/
+│   │   ├── announcementController.js
+│   │   ├── opportunityController.js
+│   │   ├── shiftController.js
+│   │   ├── staffController.js
+│   │   └── volunteerController.js
+│   ├── database/
+│   │   └── fora_sa.sql # re-export this if you fixed keys on Azure/RDS
+│   ├── middleware/
+│   │   └── requireStaffAuth.js
+│   ├── models/
+│   │   ├── announcementModel.js
+│   │   ├── opportunityModel.js
+│   │   ├── shiftModel.js
+│   │   ├── staffModel.js
+│   │   └── volunteerModel.js
+│   ├── routes/
+│   │   ├── announcementRoutes.js
+│   │   ├── opportunityRoutes.js
+│   │   ├── shiftRoutes.js
+│   │   ├── staffRoutes.js
+│   │   └── volunteerRoutes.js
+│   └── scripts/
+│       └── createStaffUser.js
 │
 └── frontend/
-├── public/
-├── src/
-│ ├── assets/
-│ │ ├── images/
-│ │ ├── icons/
-│ │ └── githubImages/
-│ ├── components/
-│ │ ├── navbar.js
-│ │ ├── footer.js
-│ │ ├── staffNavbar.js
-│ │ ├── staffFooter.js
-│ │ ├── labelPicker.js
-│ │ ├── requireStaffAuth.js
-│ │ └── thankYouModal.js / .css
-│ ├── pages/
-│ │ ├── home.js / .css
-│ │ ├── story.js / .css
-│ │ ├── terms.js / .css
-│ │ ├── contact.js / .css
-│ │ ├── opportunities.js / .css
-│ │ ├── announcements.js / .css
-│ │ ├── volunteer.js / .css
-│ │ └── staff/
-│ │ ├── login.js / .css
-│ │ ├── dashboard.js
-│ │ ├── addAnnouncement.js / editAnnouncement.js
-│ │ ├── manageAnnouncements.js
-│ │ ├── addOpportunity.js / editOpportunity.js
-│ │ ├── manageOpportunities.js
-│ │ ├── volunteerApplications.js
-│ │ ├── viewVolunteerApplication.js
-│ │ └── staff.css
-│ ├── utils/
-│ │ └── staffAuth.js
-│ ├── App.js
-│ └── index.js
-└── package.json
+    ├── .env.production
+    ├── package.json
+    ├── public/
+    │   ├── favicon.svg
+    │   ├── index.html
+    │   ├── manifest.json
+    │   ├── robots.txt
+    │   └── staticwebapp.config.json
+    └── src/
+        ├── assets/
+        │   ├── githubImages/
+        │   ├── icons/
+        │   └── images/
+        ├── components/
+        │   ├── footer.js
+        │   ├── labelPicker.js
+        │   ├── navbar.js
+        │   ├── requireStaffAuth.js
+        │   ├── staffFooter.js
+        │   ├── staffNavbar.js
+        │   └── thankYouModal.js / .css
+        ├── pages/
+        │   ├── announcements.js / .css
+        │   ├── contact.js / .css
+        │   ├── home.js / .css
+        │   ├── opportunities.js / .css
+        │   ├── story.js / .css
+        │   ├── terms.js / .css
+        │   ├── volunteer.js / .css
+        │   └── staff/
+        │       ├── addAnnouncement.js
+        │       ├── addOpportunity.js
+        │       ├── dashboard.js
+        │       ├── editAnnouncement.js
+        │       ├── editOpportunity.js
+        │       ├── login.js / .css
+        │       ├── manageAnnouncements.js
+        │       ├── manageOpportunities.js
+        │       ├── viewVolunteerApplication.js
+        │       ├── volunteerApplications.js
+        │       └── staff.css
+        ├── utils/
+        │   ├── api.js
+        │   ├── staffAuth.js
+        │   └── useSeo.js
+        ├── App.js
+        ├── App.css
+        ├── index.js
+        └── index.css
 ```
 
 ---
@@ -224,14 +251,6 @@ In addition to the AWS environment, the project maintains an automated `Azure` d
 
 ## Final Outcome
 
-### Mockups
-
-im busy with them :)
-
-### Presentation Slides
-
-coming soon :3
-
 ### Live Website Links
 
 Deployment Using Azure:
@@ -239,6 +258,24 @@ Deployment Using Azure:
 
 Deployment Using AWS:
 [FORA Connect AWS](https://main.d2ovdv3v4sfzkv.amplifyapp.com)
+
+### Mockups
+
+#### Desktop PC
+![Desktop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/pc%20mockup.png)
+
+#### Laptop
+![Laptop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/laptop%20mockup.png)
+
+#### Tablet
+![Tablet Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/tablet%20mockup.png)
+
+#### Mobile
+![Mobile Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/mobile%20mockup.png)
+
+### Presentation Slides
+
+coming soon :3
 
 ---
 
