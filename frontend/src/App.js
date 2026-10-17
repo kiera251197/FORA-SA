@@ -18,6 +18,7 @@ import ManageOpportunities from './pages/staff/manageOpportunities';
 import VolunteerApplications from './pages/staff/volunteerApplications';
 import ViewVolunteerApplication from './pages/staff/viewVolunteerApplication';
 import ReactGA from 'react-ga4';
+import { useLocation } from "react-router-dom";
 import ScrollToTop from '../src/components/scrollToTop';
 import React, { useEffect } from 'react';
 
