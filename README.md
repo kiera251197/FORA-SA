@@ -130,76 +130,103 @@ on hand for every update.
 ### File Structure
 ```
 FORA-SA/
+├── .github/
+│   └── workflows/
+│       ├── azure-static-web-apps-yellow-meadow-01f7f6c10.yml # Azure frontend CI/CD
+│       └── main_fora-backend.yml # Azure backend CI/CD
+├── .vscode/
+├── .deployment
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── README.md
+│
 ├── backend/
-│ ├── config/
-│ │ ├── cloudinary.js
-│ │ ├── database.js
-│ │ ├── server.js
-│ │ └── upload.js
-│ ├── controller/
-│ │ ├── announcementController.js
-│ │ ├── opportunityController.js
-│ │ ├── shiftController.js
-│ │ ├── staffController.js
-│ │ └── volunteerController.js
-│ ├── models/
-│ │ ├── announcementModel.js
-│ │ ├── opportunityModel.js
-│ │ ├── shiftModel.js
-│ │ ├── staffModel.js
-│ │ └── volunteerModel.js
-│ ├── routes/
-│ │ ├── announcementRoutes.js
-│ │ ├── opportunityRoutes.js
-│ │ ├── shiftRoutes.js
-│ │ ├── staffRoutes.js
-│ │ └── volunteerRoutes.js
-│ ├── middleware/
-│ │ └── requireStaffAuth.js
-│ ├── scripts/
-│ │ └── createStaffUser.js
-│ ├── database/
-│ │ └── fora_sa.sql
-│ └── package.json
+│   ├── .deployment
+│   ├── .platform/ # AWS Elastic Beanstalk (only if you added it)
+│   │   └── nginx/conf.d/proxy.conf # raises the upload limit to 10MB
+│   ├── Procfile # AWS Elastic Beanstalk start command (only if added)
+│   ├── package.json
+│   ├── config/
+│   │   ├── cloudinary.js
+│   │   ├── database.js
+│   │   ├── server.js
+│   │   └── upload.js
+│   ├── controller/
+│   │   ├── announcementController.js
+│   │   ├── opportunityController.js
+│   │   ├── shiftController.js
+│   │   ├── staffController.js
+│   │   └── volunteerController.js
+│   ├── database/
+│   │   └── fora_sa.sql # re-export this if you fixed keys on Azure/RDS
+│   ├── middleware/
+│   │   └── requireStaffAuth.js
+│   ├── models/
+│   │   ├── announcementModel.js
+│   │   ├── opportunityModel.js
+│   │   ├── shiftModel.js
+│   │   ├── staffModel.js
+│   │   └── volunteerModel.js
+│   ├── routes/
+│   │   ├── announcementRoutes.js
+│   │   ├── opportunityRoutes.js
+│   │   ├── shiftRoutes.js
+│   │   ├── staffRoutes.js
+│   │   └── volunteerRoutes.js
+│   └── scripts/
+│       └── createStaffUser.js
 │
 └── frontend/
-├── public/
-├── src/
-│ ├── assets/
-│ │ ├── images/
-│ │ ├── icons/
-│ │ └── githubImages/
-│ ├── components/
-│ │ ├── navbar.js
-│ │ ├── footer.js
-│ │ ├── staffNavbar.js
-│ │ ├── staffFooter.js
-│ │ ├── labelPicker.js
-│ │ ├── requireStaffAuth.js
-│ │ └── thankYouModal.js / .css
-│ ├── pages/
-│ │ ├── home.js / .css
-│ │ ├── story.js / .css
-│ │ ├── terms.js / .css
-│ │ ├── contact.js / .css
-│ │ ├── opportunities.js / .css
-│ │ ├── announcements.js / .css
-│ │ ├── volunteer.js / .css
-│ │ └── staff/
-│ │ ├── login.js / .css
-│ │ ├── dashboard.js
-│ │ ├── addAnnouncement.js / editAnnouncement.js
-│ │ ├── manageAnnouncements.js
-│ │ ├── addOpportunity.js / editOpportunity.js
-│ │ ├── manageOpportunities.js
-│ │ ├── volunteerApplications.js
-│ │ ├── viewVolunteerApplication.js
-│ │ └── staff.css
-│ ├── utils/
-│ │ └── staffAuth.js
-│ ├── App.js
-│ └── index.js
-└── package.json
+    ├── .env.production
+    ├── package.json
+    ├── public/
+    │   ├── favicon.svg
+    │   ├── index.html
+    │   ├── manifest.json
+    │   ├── robots.txt
+    │   └── staticwebapp.config.json
+    └── src/
+        ├── assets/
+        │   ├── githubImages/
+        │   ├── icons/
+        │   └── images/
+        ├── components/
+        │   ├── footer.js
+        │   ├── labelPicker.js
+        │   ├── navbar.js
+        │   ├── requireStaffAuth.js
+        │   ├── staffFooter.js
+        │   ├── staffNavbar.js
+        │   └── thankYouModal.js / .css
+        ├── pages/
+        │   ├── announcements.js / .css
+        │   ├── contact.js / .css
+        │   ├── home.js / .css
+        │   ├── opportunities.js / .css
+        │   ├── story.js / .css
+        │   ├── terms.js / .css
+        │   ├── volunteer.js / .css
+        │   └── staff/
+        │       ├── addAnnouncement.js
+        │       ├── addOpportunity.js
+        │       ├── dashboard.js
+        │       ├── editAnnouncement.js
+        │       ├── editOpportunity.js
+        │       ├── login.js / .css
+        │       ├── manageAnnouncements.js
+        │       ├── manageOpportunities.js
+        │       ├── viewVolunteerApplication.js
+        │       ├── volunteerApplications.js
+        │       └── staff.css
+        ├── utils/
+        │   ├── api.js
+        │   ├── staffAuth.js
+        │   └── useSeo.js
+        ├── App.js
+        ├── App.css
+        ├── index.js
+        └── index.css
 ```
 
 ---
