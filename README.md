@@ -216,7 +216,10 @@ coming soon...
 ## Website Links
 
 Deployment Using Azure:
-[FORA Connect](https://www.forasaconnect.co.za/)
+[FORA Connect Azure](https://www.forasaconnect.co.za/)
+
+Deployment Using AWS:
+[FORA Connect AWS](https://main.d2ovdv3v4sfzkv.amplifyapp.com)
 
 ---
 
