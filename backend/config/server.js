@@ -29,10 +29,6 @@ app.get("/", (req, res) => {
   res.send("FORA API Backend is running!");
 });
 
-app.get("/api/health", (req, res) => {
-  res.json({ status: "OK" });
-});
-
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
@@ -50,7 +46,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get("/api/health", (req, res) => {
-    res.status(200).json({ status: "ok", message: "FORA Backend is active" });
+    res.status(200).json({ status: "ok", message: "Something went wrong on the server..." });
 });
 
 app.use("/api/staff", staffRoutes);
