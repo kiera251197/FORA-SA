@@ -248,6 +248,7 @@ h1, h2, h3 {
     padding: 14px 16px;
     border: 1px solid var(--lavender);
     border-radius: 10px;
+    width: 100%;
     font-family: var(--fontBody);
     font-size: 1rem;
     font-weight: 400;

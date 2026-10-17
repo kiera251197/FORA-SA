@@ -56,6 +56,7 @@ export default function Volunteer() {
         shiftId: "",
         skills: "", motivation: "",
     });
+    
     const [agreed, setAgreed] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);

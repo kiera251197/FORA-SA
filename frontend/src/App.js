@@ -18,6 +18,7 @@ import ManageOpportunities from './pages/staff/manageOpportunities';
 import VolunteerApplications from './pages/staff/volunteerApplications';
 import ViewVolunteerApplication from './pages/staff/viewVolunteerApplication';
 import ReactGA from 'react-ga4';
+import ScrollToTop from '../src/components/scrollToTop';
 import React, { useEffect } from 'react';
 
 ReactGA.initialize('G-RTHBW2W4S1');
@@ -28,6 +29,9 @@ function App() {
   }, []);
 
   return (
+    <>
+    <ScrollToTop />
+    
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/story" element={<Story />} />
@@ -47,6 +51,7 @@ function App() {
       <Route path="/staff/volunteerApplications" element={<RequireStaffAuth><VolunteerApplications /></RequireStaffAuth>} />
       <Route path="/staff/volunteerApplications/:id" element={<RequireStaffAuth><ViewVolunteerApplication /></RequireStaffAuth>} />
     </Routes>
+    </>
   );
 }
 
