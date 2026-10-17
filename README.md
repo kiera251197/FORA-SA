@@ -17,7 +17,10 @@ A digital home for shelter, care and community.
   - [How to Install](#how-to-install)
   - [File Structure](#file-structure)
 - [Features and Functionality](#features-and-functionality)
-- [Website Links](#website-links)
+- [Final Outcome](#final-outcome)
+  - [Mockups](#mockups)
+  - [Presentation Slides](#presentation-slides)
+  - [Live Website Links](#live-website-links)
 - [Acknowledgements](#acknowledgements)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
@@ -219,7 +222,17 @@ In addition to the AWS environment, the project maintains an automated `Azure` d
 
 ---
 
-## Website Links
+## Final Outcome
+
+### Mockups
+
+im busy with them :)
+
+### Presentation Slides
+
+coming soon :3
+
+### Live Website Links
 
 Deployment Using Azure:
 [FORA Connect Azure](https://www.forasaconnect.co.za/)
