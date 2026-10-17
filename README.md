@@ -235,16 +235,16 @@ Deployment Using AWS:
 ### Mockups
 
 #### Desktop PC
-[Desktop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/pc%20mockup.png)
+![Desktop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/pc%20mockup.png)
 
 #### Laptop
-[Laptop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/laptop%20mockup.png)
+![Laptop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/laptop%20mockup.png)
 
 #### Tablet
-[Tablet Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/tablet%20mockup.png)
+![Tablet Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/tablet%20mockup.png)
 
 #### Mobile
-[Mobile Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/mobile%20mockup.png)
+![Mobile Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/mobile%20mockup.png)
 
 ### Presentation Slides
 
