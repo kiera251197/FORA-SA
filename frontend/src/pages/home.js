@@ -149,7 +149,7 @@ export default function Home() {
         <section className="cta">
           <h2>Willing To Help Out?</h2>
           <p>
-            Please take look at our volunteer form (compulsory for all FORA volunteers) and fill out your preferred activities and skills. This helps FORA to better plan for volunteer days.
+            Please take a look at our volunteer form (compulsory for all FORA volunteers) and fill out your preferred activities and skills. This helps FORA to better plan for volunteer days.
           </p>
           <Link to="/volunteer" className="btn btnTeal"><FiEye aria-hidden="true" /> View Form</Link>
         </section>
