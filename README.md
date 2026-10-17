@@ -18,9 +18,9 @@ A digital home for shelter, care and community.
   - [File Structure](#file-structure)
 - [Features and Functionality](#features-and-functionality)
 - [Final Outcome](#final-outcome)
+  - [Live Website Links](#live-website-links)
   - [Mockups](#mockups)
   - [Presentation Slides](#presentation-slides)
-  - [Live Website Links](#live-website-links)
 - [Acknowledgements](#acknowledgements)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
@@ -224,14 +224,6 @@ In addition to the AWS environment, the project maintains an automated `Azure` d
 
 ## Final Outcome
 
-### Mockups
-
-im busy with them :)
-
-### Presentation Slides
-
-coming soon :3
-
 ### Live Website Links
 
 Deployment Using Azure:
@@ -239,6 +231,24 @@ Deployment Using Azure:
 
 Deployment Using AWS:
 [FORA Connect AWS](https://main.d2ovdv3v4sfzkv.amplifyapp.com)
+
+### Mockups
+
+#### Desktop PC
+[Desktop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/pc%20mockup.png)
+
+#### Laptop
+[Laptop Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/laptop%20mockup.png)
+
+#### Tablet
+[Tablet Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/tablet%20mockup.png)
+
+#### Mobile
+[Mobile Mockup](https://github.com/kiera251197/FORA-SA/blob/dde72d92c60960e2cdc9b971153686c77032949d/frontend/src/assets/githubImages/mobile%20mockup.png)
+
+### Presentation Slides
+
+coming soon :3
 
 ---
 
