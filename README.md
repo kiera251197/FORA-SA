@@ -24,7 +24,7 @@ A digital home for shelter, care and community.
   - [Live Website Links](#live-website-links)
   - [Mockups](#mockups)
   - [Presentation Slides](#presentation-slides)
-- [Deployment Summary](#deployment-links)
+- [Deployment Summary](#deployment-summary)
 - [Challenges and Solutions](#challenges-and-solutions)
 - [What I Learnt](#what-i-learnt)
 - [Acknowledgements](#acknowledgements)
