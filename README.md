@@ -6,7 +6,7 @@
 
 A digital home for shelter, care and community.
 
-**FORA SA Connect** is a full-stack volunteer management platform for Friends of Rescued Animals South Africa (FORA SA) - a public facing site where visitors can learn about the shelter, browse volunteer opportunities and register to help out, and a staff only side with CRUD functionality where FORA's team can post announcements/opportunities, manage said announcements & opportunities (with image uploads) as well as review submitted volunteer applications.
+**FORA SA Connect** is a full-stack volunteer management platform for Friends of Rescued Animals South Africa (FORA SA), a public facing site where visitors can learn about the shelter, browse volunteer opportunities and register to help out, and a staff only side with CRUD functionality where FORA's team can post announcements/opportunities, manage said announcements & opportunities (with image uploads) as well as review submitted volunteer applications.
 
 ## Table of Contents
 
@@ -24,6 +24,7 @@ A digital home for shelter, care and community.
   - [Live Website Links](#live-website-links)
   - [Mockups](#mockups)
   - [Presentation Slides](#presentation-slides)
+- [Deployment Summary](#deployment-links)
 - [Challenges and Solutions](#challenges-and-solutions)
 - [What I Learnt](#what-i-learnt)
 - [Acknowledgements](#acknowledgements)
@@ -250,7 +251,7 @@ In addition to the AWS environment, the project maintains an automated `Azure` d
 
 ### ERD
 
-![ERD](https://github.com/kiera251197/FORA-SA/blob/32aef8b1bfb7e9c6e8559aad77b59f0045dd97f4/frontend/src/assets/githubImages/fora%20sa.jpg)
+![FORA SA ERD](https://github.com/kiera251197/FORA-SA/blob/32aef8b1bfb7e9c6e8559aad77b59f0045dd97f4/frontend/src/assets/githubImages/fora%20sa.jpg)
 
 ### Design Reference
 
@@ -267,11 +268,11 @@ This website implements the **[FORA SA Connect]** web app designed in Figma by *
 
 ### Live Website Links
 
-Deployment Using Azure:
-[Platform 1](https://www.forasaconnect.co.za/)
+Platform 1:
+[Microsoft Azure](https://www.forasaconnect.co.za/)
 
-Deployment Using AWS:
-[Platform 2](https://main.d2ovdv3v4sfzkv.amplifyapp.com)
+Platform 2:
+[Amazon Web Services](https://main.d2ovdv3v4sfzkv.amplifyapp.com)
 
 ### Mockups
 
@@ -290,6 +291,26 @@ Deployment Using AWS:
 ### Presentation Slides
 
 coming soon :3
+
+---
+
+## Deployment Summary
+
+### Platform 1: Microsoft Azure
+- **Frontend:** Azure Static Web Apps, deployed automatically from GitHub by a GitHub Actions workflow on every push to `main`. `staticwebapp.config.json` rewrites unknown paths to `index.html` so React Router works on refresh.
+- **Backend:** Azure App Service (Node.js), deployed by a second GitHub Actions workflow.
+- **Database:** Azure Database for MySQL, with the schema imported from `backend/database/fora_sa.sql`.
+- **Domain:** custom domain from GoDaddy, connected with DNS records and an Azure managed SSL certificate.
+- **Configuration:** environment variables on App Service (`DB_*`, `DB_SSL`, `JWT_SECRET`, `CLOUDINARY_*`, `FRONTEND_URL`) and `REACT_APP_API_URL` at frontend build time.
+
+### Platform 2: Amazon Web Services
+- **Frontend:** AWS Amplify Hosting (monorepo, app root `frontend`) with a rewrite rule that serves `index.html` for client side routes.
+- **Backend:** Elastic Beanstalk (Node.js on Amazon Linux), started through the `Procfile`, with an nginx config (`.platform/`) that allows 10MB image uploads.
+- **HTTPS for the API:** an Amazon CloudFront distribution in front of Beanstalk, so the HTTPS frontend can call the API without mixed content errors.
+- **Database:** Amazon RDS for MySQL in the default VPC, restricted by a security group.
+- **Configuration:** Beanstalk environment properties (same variables as Azure) and `REACT_APP_API_URL` set in Amplify.
+
+---
 
 ## Challenges and Solutions
 
@@ -343,6 +364,8 @@ coming soon :3
 **10. Refreshing a page gave a 404 on Amplify**
 - **Challenge:** Client side routes like `/staff/login` don't exist as real files.
 - **Solution:** Added an Amplify rewrite rule that serves `index.html` for non-file paths (the same job `staticwebapp.config.json` does on Azure). I also set `CI=false` so React doesn't turn build warnings into build failures.
+
+---
 
 ## What I Learnt
 
