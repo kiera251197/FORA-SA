@@ -17,11 +17,14 @@ A digital home for shelter, care and community.
   - [How to Install](#how-to-install)
   - [File Structure](#file-structure)
 - [Features and Functionality](#features-and-functionality)
+- [Planning & Process](#planning-&-process)
+  - [ERD](#erd)
+  - [Wireframes](#wireframes)
 - [Final Outcome](#final-outcome)
   - [Live Website Links](#live-website-links)
   - [Mockups](#mockups)
   - [Presentation Slides](#presentation-slides)
-- [Acknowledgements](#acknowledgements)
+- [Challenges and Solutions](#challenges-and-solutions)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
@@ -242,10 +245,14 @@ The system is deployed on `AWS` infrastructure, using Elastic Beanstalk for the 
 In addition to the AWS environment, the project maintains an automated `Azure` deployment pipeline using Azure Static Web Apps configured via GitHub Actions workflows (`azure-static-web-apps.yml`), utilising custom fallback routing rules (`staticwebapp.config.json`) to handle client side routes and seamless deployment environments.
 
 ---
+## Features and Functionality
 
-## ERD Diagram
+### ERD
 
-![FORA SA Banner](https://github.com/kiera251197/FORA-SA/blob/32aef8b1bfb7e9c6e8559aad77b59f0045dd97f4/frontend/src/assets/githubImages/fora%20sa.jpg)
+![ERD](https://github.com/kiera251197/FORA-SA/blob/32aef8b1bfb7e9c6e8559aad77b59f0045dd97f4/frontend/src/assets/githubImages/fora%20sa.jpg)
+
+### Wireframes
+
 
 ---
 
@@ -276,6 +283,65 @@ Deployment Using AWS:
 ### Presentation Slides
 
 coming soon :3
+
+## Challenges and Solutions
+
+### During Development
+
+**1. The same label component needed to behave differently on different pages**
+- **Challenge:** Announcements and opportunities share labels but opportunities also use Indoor/Outdoor/Weekday/Weekend, which make no sense for announcements.
+- **Solution:** Gave `LabelPicker` a `scope` prop and tagged each label with the scopes it belongs to, so one component serves both forms. A shared `labelClassMap` keeps pill colours consistent across the public site and staff dashboard.
+
+**2. Protecting staff routes on both sides**
+- **Challenge:** Hiding staff pages in React isn't secure because anyone can call the API directly.
+- **Solution:** Passwords are hashed with bcrypt and verified on login, which returns a JWT that expires after 8 hours. A `requireStaffAuth` middleware checks the token on every create, update and delete route. On the frontend, a `RequireStaffAuth` route guard handles redirects, and a `staffFetch` helper attaches the token to every staff request. There is no public sign up and staff accounts are created by a command line script.
+
+### Deployment: Azure
+
+**3. The deployed site loaded but showed no data**
+- **Challenge:** The frontend, backend and database were all deployed but every API call returned a 404.
+- **Cause:** The server file lives in `backend/config/`, but the start script and deployment settings didn't point at it, so Azure fell back to its default page.
+- **Solution:** Corrected the start command and removed leftover code that referenced an undefined path.
+
+**4. Relative API URLs only worked locally**
+- **Challenge:** Staff could log in but couldn't add, edit or delete anything. The console showed "Unexpected token `<`" because the app received an HTML page instead of JSON.
+- **Cause:** Calls like `fetch("/api/...")` only reach the backend in development. In production they hit the static site itself.
+- **Solution:** Created a central `API_BASE_URL` (from `REACT_APP_API_URL`) and updated `staffFetch` and all public fetches to use it.
+
+**5. CORS blocked the production frontend**
+- **Challenge:** Once the backend ran, the browser rejected requests from the deployed site.
+- **Solution:** Replaced the open CORS setting with an allow list built from defaults plus a `FRONTEND_URL` environment variable so each new domain (Azure URL, custom domain, AWS URL) can be added without a code change.
+
+**6. Strict SQL mode rejected my queries (HTTP 500)**
+- **Challenge:** Announcements and opportunities returned 500 on Azure only. The log showed `only_full_group_by` errors.
+- **Cause:** Azure MySQL enforces strict `GROUP BY` rules that XAMPP doesn't.
+- **Solution:** Read the backend log stream to find the exact SQL error, then relaxed the mode per connection in `database.js` and fixed the underlying cause (see number 7 below).
+
+**7. The database import silently lost my primary keys**
+- **Challenge:** Tables on Azure had no `PRIMARY KEY` or `AUTO_INCREMENT` on `id`, and extra hidden `my_row_id` columns had appeared.
+- **Cause:** phpMyAdmin exports keys as `ALTER TABLE` statements at the end of the dump. Azure had already auto added invisible primary keys, so those statements failed and the import carried on.
+- **Solution:** Rebuilt the keys and foreign keys manually with `ALTER TABLE` scripts, then verified with `SHOW CREATE TABLE`. For future imports, turn off `sql_generate_invisible_primary_key` first.
+- **Lesson:** "Import succeeded" doesn't mean the schema is correct -_-
+
+### Deployment: AWS
+
+**8. An https frontend can't call an http API**
+- **Challenge:** A single Beanstalk instance only serves plain `http://` and browsers block insecure requests from an https page (mixed content).
+- **Solution:** Put a CloudFront distribution in front of the API to provide HTTPS with caching disabled and all HTTP methods and headers forwarded.
+
+**9. Image uploads failed with a 413 on Beanstalk**
+- **Challenge:** Beanstalk's nginx proxy rejects request bodies over 1 MB by default, but the my web app allows uploads of up to 10 MB for images.
+- **Solution:** Added `.platform/nginx/conf.d/proxy.conf` with `client_max_body_size 10M;`.
+
+**10. Refreshing a page gave a 404 on Amplify**
+- **Challenge:** Client side routes like `/staff/login` don't exist as real files.
+- **Solution:** Added an Amplify rewrite rule that serves `index.html` for non-file paths (the same job `staticwebapp.config.json` does on Azure). I also set `CI=false` so React doesn't turn build warnings into build failures.
+
+## What I Learned
+
+- Local and production environments differ in more ways than the URL... SQL strictness, proxies, upload limits and HTTPS all behaved differently 
+- Always verify an import don't assume it worked
+- Configuration (API URL, allowed origins, SSL mode) belongs in environment variables so the same code deploys to several platforms
 
 ---
 
