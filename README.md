@@ -265,10 +265,10 @@ Want to view my **wireframes** and **changes** to original handover designs from
 ### Live Website Links
 
 Deployment Using Azure:
-[FORA Connect Azure](https://www.forasaconnect.co.za/)
+[Platform 1](https://www.forasaconnect.co.za/)
 
 Deployment Using AWS:
-[FORA Connect AWS](https://main.d2ovdv3v4sfzkv.amplifyapp.com)
+[Platform 2](https://main.d2ovdv3v4sfzkv.amplifyapp.com)
 
 ### Mockups
 
