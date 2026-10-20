@@ -25,6 +25,7 @@ A digital home for shelter, care and community.
   - [Mockups](#mockups)
   - [Presentation Slides](#presentation-slides)
 - [Challenges and Solutions](#challenges-and-solutions)
+- [What I Learnt](#what-i-learnt)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
 
@@ -245,7 +246,7 @@ The system is deployed on `AWS` infrastructure, using Elastic Beanstalk for the 
 In addition to the AWS environment, the project maintains an automated `Azure` deployment pipeline using Azure Static Web Apps configured via GitHub Actions workflows (`azure-static-web-apps.yml`), utilising custom fallback routing rules (`staticwebapp.config.json`) to handle client side routes and seamless deployment environments.
 
 ---
-## Features and Functionality
+## Planning & Process
 
 ### ERD
 
@@ -253,6 +254,8 @@ In addition to the AWS environment, the project maintains an automated `Azure` d
 
 ### Wireframes
 
+Want to view my **wireframes** and **changes** to original handover designs from UX?
+[Figma Wireframes](https://www.figma.com/design/MV9t4loGJaZgXqL5V8EPhR/FORA-DV-200?node-id=5002-752&t=MPT8RKxuw0BvBV6g-1)
 
 ---
 
@@ -337,7 +340,7 @@ coming soon :3
 - **Challenge:** Client side routes like `/staff/login` don't exist as real files.
 - **Solution:** Added an Amplify rewrite rule that serves `index.html` for non-file paths (the same job `staticwebapp.config.json` does on Azure). I also set `CI=false` so React doesn't turn build warnings into build failures.
 
-## What I Learned
+## What I Learnt
 
 - Local and production environments differ in more ways than the URL... SQL strictness, proxies, upload limits and HTTPS all behaved differently 
 - Always verify an import don't assume it worked
