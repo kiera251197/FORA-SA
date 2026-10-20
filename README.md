@@ -290,7 +290,7 @@ Platform 2:
 
 ### Presentation Slides
 
-coming soon :3
+[FORA SA Slides](https://canva.link/68ajfs5j8u5wsym)
 
 ---
 
