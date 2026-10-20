@@ -19,7 +19,7 @@ A digital home for shelter, care and community.
 - [Features and Functionality](#features-and-functionality)
 - [Planning & Process](#planning-&-process)
   - [ERD](#erd)
-  - [Wireframes](#wireframes)
+  - [Design Reference](#design-reference)
 - [Final Outcome](#final-outcome)
   - [Live Website Links](#live-website-links)
   - [Mockups](#mockups)
@@ -252,11 +252,14 @@ In addition to the AWS environment, the project maintains an automated `Azure` d
 
 ![ERD](https://github.com/kiera251197/FORA-SA/blob/32aef8b1bfb7e9c6e8559aad77b59f0045dd97f4/frontend/src/assets/githubImages/fora%20sa.jpg)
 
-### Wireframes
+### Design Reference
 
-Want to view my **wireframes** and **changes** to original handover designs from UX?
+This website implements the **[FORA SA Connect]** web app designed in Figma by **[Gabriel Lucio Pullela, Amelie Coetser, Victoria Fryer, Mene de Beer, Aiden Stacey-Hale, Kayla van der Westhuizen & Rachel Laubscher]** for the UX200 module.
 
-[Figma Wireframes](https://www.figma.com/design/MV9t4loGJaZgXqL5V8EPhR/FORA-DV-200?node-id=5002-752&t=MPT8RKxuw0BvBV6g-1)
+- Figma file: [Figma Link](https://www.figma.com/design/MV9t4loGJaZgXqL5V8EPhR/FORA-DV-200?node-id=5002-752&t=MPT8RKxuw0BvBV6g-1)
+- Design source and credit: Designed by the students mentioned upbove for UX200 and updated design done by me
+- Logo, icons and imagery: React Icons (Feather), custom logo, photography sources
+- Fonts: League Spartan and Red Hat Display (Google Fonts)
 
 ---
 
