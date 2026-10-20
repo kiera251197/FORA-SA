@@ -6,7 +6,7 @@
 
 A digital home for shelter, care and community.
 
-**FORA Connect** is a full-stack volunteer management platform for Friends of Rescued Animals South Africa (FORA SA) - a public facing site where visitors can learn about the shelter, browse volunteer opportunities and register to help out, and a staff only side with CRUD functionality where FORA's team can post announcements/opportunities, manage said announcements & opportunities (with image uploads) as well as review submitted volunteer applications.
+**FORA SA Connect** is a full-stack volunteer management platform for Friends of Rescued Animals South Africa (FORA SA) - a public facing site where visitors can learn about the shelter, browse volunteer opportunities and register to help out, and a staff only side with CRUD functionality where FORA's team can post announcements/opportunities, manage said announcements & opportunities (with image uploads) as well as review submitted volunteer applications.
 
 ## Table of Contents
 
