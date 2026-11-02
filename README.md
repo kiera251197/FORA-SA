@@ -377,7 +377,7 @@ Platform 2:
 
 ## Acknowledgements
 
-Cloudinary, XAMPP/phpMyAdmin, React Icons, AWS, Azure and my lecturer Tsungai Katsuro.
+Cloudinary, XAMPP/phpMyAdmin, React Icons, AWS, Azure, AI for aid in deployment steps + debugging and my lecturer Tsungai Katsuro.
 
 ## License
 
